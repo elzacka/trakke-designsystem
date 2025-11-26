@@ -3,7 +3,7 @@
 
 # Tråkke designsystem v2
 
-Et moderne, tilgjengelig designsystem for norske friluftsapplikasjoner.
+Et moderne, tilgjengelig designsystem for friluftsappen [Tråkke](https://github.com/elzacka/trakke-pwa).
 
 ## Filosofi
 
