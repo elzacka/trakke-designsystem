@@ -1,0 +1,125 @@
+import { Meta, Typeset } from '@storybook/blocks';
+
+<Meta title="Design Tokens/Typografi" />
+
+# Typografi
+
+Tråkke bruker Exo 2 som primærfont - en moderne, geometrisk sans-serif med god lesbarhet.
+
+## Font-familie
+
+**Primær**: Exo 2 (variable font, self-hosted)
+
+```css
+font-family: 'Exo 2', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+```
+
+**Monospace**: JetBrains Mono (for kode)
+
+```css
+font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', Consolas, monospace;
+```
+
+## Skriftvekter
+
+| Navn | Verdi | Bruk |
+|------|-------|------|
+| Light | 300 | Display, logoer |
+| Normal | 400 | Brødtekst |
+| Medium | 500 | Etiketter, knapper |
+| Semibold | 600 | Overskrifter |
+| Bold | 700 | Uthevet tekst |
+
+## Skriftstørrelser
+
+| Token | Størrelse | Bruk |
+|-------|-----------|------|
+| `xs` | 11px | Hjelpetekst, metadata |
+| `sm` | 12px | Sekundær tekst, etiketter |
+| `base` | 14px | Standard brødtekst |
+| `md` | 15px | Fremhevet brødtekst |
+| `lg` | 16px | Stor brødtekst |
+| `xl` | 18px | Liten overskrift |
+| `2xl` | 20px | Seksjonstittel |
+| `3xl` | 24px | Heading 1 |
+| `4xl` | 28px | Display small |
+| `5xl` | 32px | Display medium |
+| `6xl` | 40px | Display large |
+
+## Teksthierarki
+
+### Display
+
+Store overskrifter for hero-seksjoner og landingssider.
+
+```tsx
+<Text variant="display-lg">Display Large</Text>
+<Text variant="display-md">Display Medium</Text>
+<Text variant="display-sm">Display Small</Text>
+```
+
+### Overskrifter
+
+For strukturering av innhold.
+
+```tsx
+<Text variant="heading-1">Heading 1</Text>
+<Text variant="heading-2">Heading 2</Text>
+<Text variant="heading-3">Heading 3</Text>
+<Text variant="heading-4">Heading 4</Text>
+```
+
+### Brødtekst
+
+For paragraftekst og generelt innhold.
+
+```tsx
+<Text variant="body-lg">Stor brødtekst</Text>
+<Text variant="body-md">Standard brødtekst</Text>
+<Text variant="body-sm">Liten brødtekst</Text>
+```
+
+### Etiketter og Caption
+
+For skjemafelt, knapper og metadata.
+
+```tsx
+<Text variant="label-lg">Stor etikett</Text>
+<Text variant="label-md">Standard etikett</Text>
+<Text variant="label-sm">Liten etikett</Text>
+<Text variant="caption">Caption-tekst</Text>
+```
+
+## Linjehøyder
+
+| Token | Verdi | Bruk |
+|-------|-------|------|
+| `tight` | 1.2 | Display, overskrifter |
+| `snug` | 1.3 | Korte tekstblokker |
+| `normal` | 1.5 | Standard brødtekst |
+| `relaxed` | 1.6 | Lang brødtekst |
+| `loose` | 1.75 | Maksimal lesbarhet |
+
+## Bruk i kode
+
+### SCSS
+
+```scss
+@use '@trakke/design-system/styles/typography' as *;
+
+.my-heading {
+  font-family: $trk-font-family-primary;
+  font-size: $trk-font-size-3xl;
+  font-weight: $trk-font-weight-semibold;
+  line-height: $trk-line-height-snug;
+}
+```
+
+### CSS Custom Properties
+
+```css
+.my-heading {
+  font-family: var(--trk-font-family-primary);
+  font-size: var(--trk-font-size-3xl);
+}
+```

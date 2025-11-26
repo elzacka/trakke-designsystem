@@ -1,0 +1,49 @@
+/**
+ * TRÅKKE DESIGNSYSTEM
+ * Spinner Component Styles
+ */
+
+@use '../../styles/colors' as *;
+@use '../../styles/animations' as *;
+
+.spinner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.svg {
+  animation: spin $trk-duration-slowest linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.track {
+  stroke: currentColor;
+  opacity: 0.2;
+}
+
+.indicator {
+  stroke: currentColor;
+  stroke-linecap: round;
+}
+
+.variant-default { color: $trk-text-muted; }
+.variant-brand { color: $trk-brand; }
+.variant-white { color: white; }
+.variant-muted { color: $trk-text-soft; }
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

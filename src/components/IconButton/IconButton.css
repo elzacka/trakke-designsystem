@@ -1,0 +1,140 @@
+/**
+ * TRÅKKE DESIGN SYSTEM
+ * IconButton Component Styles
+ */
+
+.trk-icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: var(--trk-radius-md, 12px);
+  background-color: var(--trk-surface, #ffffff);
+  color: var(--trk-text, #1a1d1b);
+  cursor: pointer;
+  transition: 
+    background-color 0.15s ease-out,
+    box-shadow 0.15s ease-out,
+    transform 0.15s ease-out;
+}
+
+.trk-icon-button:hover:not(:disabled) {
+  background-color: var(--trk-surface-subtle, #f5f5f2);
+}
+
+.trk-icon-button:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.trk-icon-button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--trk-blue-tint, rgba(30, 108, 224, 0.2));
+}
+
+.trk-icon-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Sizes */
+.trk-icon-button--sm {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  min-height: 32px;
+}
+
+.trk-icon-button--md {
+  width: 40px;
+  height: 40px;
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.trk-icon-button--lg {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  min-height: 48px;
+}
+
+/* Variants */
+.trk-icon-button--default {
+  background-color: var(--trk-surface, #ffffff);
+  color: var(--trk-text, #1a1d1b);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.trk-icon-button--default:hover:not(:disabled) {
+  background-color: var(--trk-surface-subtle, #f5f5f2);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+.trk-icon-button--primary {
+  background-color: var(--trk-brand, #3e4533);
+  color: white;
+}
+
+.trk-icon-button--primary:hover:not(:disabled) {
+  background-color: var(--trk-brand-dark, #2d331f);
+}
+
+.trk-icon-button--ghost {
+  background-color: transparent;
+  color: var(--trk-text-muted, #6b7280);
+}
+
+.trk-icon-button--ghost:hover:not(:disabled) {
+  background-color: var(--trk-surface-subtle, #f5f5f2);
+  color: var(--trk-text, #1a1d1b);
+}
+
+.trk-icon-button--destructive {
+  background-color: var(--trk-red, #d93636);
+  color: white;
+}
+
+.trk-icon-button--destructive:hover:not(:disabled) {
+  background-color: var(--trk-red-dark, #b82c2c);
+}
+
+/* Icon */
+.trk-icon-button__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.trk-icon-button__icon .material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' -25, 'opsz' 24;
+}
+
+.trk-icon-button--primary .trk-icon-button__icon .material-symbols-outlined {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Loading */
+.trk-icon-button--loading {
+  cursor: wait;
+}
+
+.trk-icon-button__spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.trk-icon-button__spinner svg {
+  width: 20px;
+  height: 20px;
+  animation: trk-icon-button-spin 1s linear infinite;
+}
+
+@keyframes trk-icon-button-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,103 @@
+/**
+ * TRÅKKE DESIGNSYSTEM
+ * Card Component Styles
+ */
+
+@use '../../styles/colors' as *;
+@use '../../styles/spacing' as *;
+@use '../../styles/borders' as *;
+@use '../../styles/shadows' as *;
+@use '../../styles/animations' as *;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: $trk-surface;
+  border-radius: $trk-radius-card;
+  transition: 
+    box-shadow $trk-duration-fast $trk-ease-out,
+    transform $trk-duration-fast $trk-ease-out,
+    background-color $trk-duration-fast $trk-ease-out;
+}
+
+.variant-elevated {
+  box-shadow: $trk-shadow-soft;
+  
+  &.clickable:hover:not(.disabled) {
+    box-shadow: $trk-shadow-soft-lg;
+  }
+}
+
+.variant-outlined {
+  border: 1px solid $trk-border;
+  box-shadow: none;
+  
+  &.clickable:hover:not(.disabled) {
+    border-color: $trk-border-strong;
+    background-color: $trk-surface-subtle;
+  }
+}
+
+.variant-filled {
+  background-color: $trk-surface-subtle;
+  box-shadow: none;
+}
+
+.padding-none { padding: 0; }
+.padding-sm { padding: $trk-space-3; }
+.padding-md { padding: $trk-space-4; }
+.padding-lg { padding: $trk-space-6; }
+
+.clickable {
+  cursor: pointer;
+  
+  &:active:not(.disabled) {
+    transform: scale(0.99);
+  }
+  
+  &:focus-visible {
+    outline: none;
+    box-shadow: $trk-shadow-soft, $trk-shadow-focus;
+  }
+}
+
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: $trk-space-3;
+  
+  & + .content {
+    padding-top: $trk-space-3;
+  }
+}
+
+.content {
+  flex: 1;
+  
+  > :first-child { margin-top: 0; }
+  > :last-child { margin-bottom: 0; }
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  gap: $trk-space-3;
+  padding-top: $trk-space-3;
+  margin-top: auto;
+  
+  .content + & {
+    border-top: 1px solid $trk-border;
+    margin-top: $trk-space-3;
+    padding-top: $trk-space-3;
+  }
+}

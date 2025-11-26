@@ -1,0 +1,224 @@
+/**
+ * Input Component Styles
+ * Tråkke Design System - "Nordisk Ro"
+ */
+
+/* Container */
+.trk-input-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--trk-space-xs);
+}
+
+.trk-input-container--full-width {
+  width: 100%;
+}
+
+/* Label */
+.trk-input__label {
+  font-family: var(--trk-font-primary);
+  font-size: var(--trk-text-sm);
+  font-weight: var(--trk-weight-medium);
+  color: var(--trk-text);
+  cursor: pointer;
+}
+
+.trk-input__required {
+  color: var(--trk-red);
+  margin-left: 2px;
+}
+
+.trk-input-container--disabled .trk-input__label {
+  color: var(--trk-text-soft);
+  cursor: not-allowed;
+}
+
+/* Wrapper */
+.trk-input__wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Base input */
+.trk-input {
+  width: 100%;
+  font-family: var(--trk-font-primary);
+  font-size: var(--trk-text-base);
+  color: var(--trk-text);
+  background: var(--trk-surface);
+  border: 1px solid var(--trk-border);
+  border-radius: var(--trk-radius-md);
+  transition: 
+    border-color var(--trk-duration-fast) var(--trk-easing-standard),
+    box-shadow var(--trk-duration-fast) var(--trk-easing-standard),
+    background-color var(--trk-duration-fast) var(--trk-easing-standard);
+}
+
+.trk-input::placeholder {
+  color: var(--trk-text-soft);
+}
+
+.trk-input:focus {
+  outline: none;
+  border-color: var(--trk-brand);
+  box-shadow: 0 0 0 3px var(--trk-brand-tint);
+}
+
+/* Size variants */
+.trk-input-container--sm .trk-input {
+  height: 36px;
+  padding: var(--trk-space-xs) var(--trk-space-sm);
+  font-size: var(--trk-text-sm);
+}
+
+.trk-input-container--md .trk-input {
+  height: 44px;
+  padding: var(--trk-space-sm) var(--trk-space-md);
+  font-size: var(--trk-text-base);
+}
+
+.trk-input-container--lg .trk-input {
+  height: 52px;
+  padding: var(--trk-space-md) var(--trk-space-lg);
+  font-size: var(--trk-text-lg);
+}
+
+/* Variant: Outlined (default) */
+.trk-input-container--outlined .trk-input {
+  background: var(--trk-surface);
+  border: 1px solid var(--trk-border);
+}
+
+.trk-input-container--outlined.trk-input-container--focused .trk-input {
+  border-color: var(--trk-brand);
+}
+
+/* Variant: Filled */
+.trk-input-container--filled .trk-input {
+  background: var(--trk-surface-subtle);
+  border: 1px solid transparent;
+  border-bottom: 2px solid var(--trk-border);
+  border-radius: var(--trk-radius-md) var(--trk-radius-md) 0 0;
+}
+
+.trk-input-container--filled.trk-input-container--focused .trk-input {
+  border-bottom-color: var(--trk-brand);
+  background: var(--trk-surface-hover);
+}
+
+/* Variant: Underlined */
+.trk-input-container--underlined .trk-input {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid var(--trk-border);
+  border-radius: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.trk-input-container--underlined.trk-input-container--focused .trk-input {
+  border-bottom-color: var(--trk-brand);
+  box-shadow: none;
+}
+
+/* Icons */
+.trk-input__icon {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--trk-text-muted);
+  pointer-events: none;
+}
+
+.trk-input__icon--leading {
+  left: var(--trk-space-sm);
+}
+
+.trk-input__icon--trailing {
+  right: var(--trk-space-sm);
+}
+
+.trk-input-container--sm .trk-input__icon {
+  width: 18px;
+  height: 18px;
+}
+
+.trk-input-container--md .trk-input__icon {
+  width: 20px;
+  height: 20px;
+}
+
+.trk-input-container--lg .trk-input__icon {
+  width: 24px;
+  height: 24px;
+}
+
+/* Padding adjustment for icons */
+.trk-input-container--has-leading.trk-input-container--sm .trk-input {
+  padding-left: calc(var(--trk-space-sm) + 18px + var(--trk-space-xs));
+}
+
+.trk-input-container--has-leading.trk-input-container--md .trk-input {
+  padding-left: calc(var(--trk-space-md) + 20px + var(--trk-space-xs));
+}
+
+.trk-input-container--has-leading.trk-input-container--lg .trk-input {
+  padding-left: calc(var(--trk-space-lg) + 24px + var(--trk-space-sm));
+}
+
+.trk-input-container--has-trailing.trk-input-container--sm .trk-input {
+  padding-right: calc(var(--trk-space-sm) + 18px + var(--trk-space-xs));
+}
+
+.trk-input-container--has-trailing.trk-input-container--md .trk-input {
+  padding-right: calc(var(--trk-space-md) + 20px + var(--trk-space-xs));
+}
+
+.trk-input-container--has-trailing.trk-input-container--lg .trk-input {
+  padding-right: calc(var(--trk-space-lg) + 24px + var(--trk-space-sm));
+}
+
+/* Error state */
+.trk-input-container--error .trk-input {
+  border-color: var(--trk-red);
+}
+
+.trk-input-container--error .trk-input:focus {
+  box-shadow: 0 0 0 3px var(--trk-red-light);
+}
+
+.trk-input-container--error .trk-input__icon {
+  color: var(--trk-red);
+}
+
+/* Disabled state */
+.trk-input-container--disabled .trk-input {
+  background: var(--trk-surface-subtle);
+  color: var(--trk-text-soft);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Helper text */
+.trk-input__helper {
+  font-family: var(--trk-font-primary);
+  font-size: var(--trk-text-xs);
+  color: var(--trk-text-muted);
+}
+
+.trk-input__helper--error {
+  color: var(--trk-red);
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .trk-input {
+    border-width: 2px;
+  }
+  
+  .trk-input:focus {
+    border-width: 3px;
+  }
+}

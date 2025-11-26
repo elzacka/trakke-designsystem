@@ -1,0 +1,79 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Introduksjon" />
+
+# Tråkke designsystem
+
+Et moderne, tilgjengelig designsystem for norske friluftsapplikasjoner.
+
+## Filosofi: Nordisk ro
+
+Tråkke designsystem er bygget rundt konseptet "Nordisk ro" - et designspråk som reflekterer den norske friluftsfilosofien:
+
+- **Friluftsliv**: Design inspirert av norsk natur og utendørskultur
+- **Privacy-first**: Ingen eksterne avhengigheter, all data i Norge/EU
+- **Offline-first**: Fullt funksjonell uten internettforbindelse
+- **Tilgjengelighet**: WCAG 2.1 AA-compliance som minimum
+
+## Kom i gang
+
+### Installasjon
+
+```bash
+npm install @trakke/design-system
+```
+
+### Importer stiler
+
+```tsx
+import '@trakke/design-system/styles';
+```
+
+### Bruk komponenter
+
+```tsx
+import { Button, Card, Sheet } from '@trakke/design-system';
+
+function App() {
+  return (
+    <Card>
+      <h2>Min tur til Besseggen</h2>
+      <Button variant="primary">Start navigasjon</Button>
+    </Card>
+  );
+}
+```
+
+## Kjerneprinsipper
+
+### 1. Brukeropplevelse
+
+- **Trygghet**: Brukeren skal føle seg trygg og ivaretatt
+- **Respekt**: Møt brukeren med forståelse og empati
+- **Tilgjengelighet**: Tjenestene skal være tilgjengelige for alle
+
+### 2. Teknisk arkitektur
+
+- React 19.2 med TypeScript
+- SCSS-moduler for styling
+- Design tokens i flere formater (CSS, SCSS, JS)
+- Storybook for dokumentasjon og testing
+
+### 3. Tilgjengelighet
+
+- WCAG 2.1 AA som minimum
+- Touch targets på minimum 44px
+- Fokusindikatorer på alle interaktive elementer
+- Støtte for redusert bevegelse
+- Skjermleser-vennlig
+
+## Mappestruktur
+
+```
+src/
+├── components/       # React-komponenter
+├── styles/          # SCSS-stiler og tokens
+├── tokens/          # JavaScript tokens
+├── hooks/           # React hooks
+└── utils/           # Hjelpefunksjoner
+```

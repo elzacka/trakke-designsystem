@@ -1,0 +1,125 @@
+/**
+ * TRÅKKE DESIGNSYSTEM
+ * Checkbox Component Styles
+ */
+
+@use '../../styles/colors' as *;
+@use '../../styles/spacing' as *;
+@use '../../styles/typography' as *;
+@use '../../styles/borders' as *;
+@use '../../styles/animations' as *;
+
+.container {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: $trk-space-2;
+  cursor: pointer;
+  
+  &.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.checkbox {
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: $trk-border-width-2 solid $trk-border-strong;
+  border-radius: $trk-radius-xs;
+  background-color: $trk-surface;
+  transition: 
+    background-color $trk-duration-fast $trk-ease-out,
+    border-color $trk-duration-fast $trk-ease-out;
+  
+  .container:hover:not(.disabled) & {
+    border-color: $trk-brand;
+  }
+}
+
+.size-sm .checkbox { width: 16px; height: 16px; }
+.size-md .checkbox { width: 20px; height: 20px; }
+.size-lg .checkbox { width: 24px; height: 24px; }
+
+.input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  cursor: inherit;
+  
+  &:focus-visible + .checkbox {
+    outline: 2px solid $trk-blue;
+    outline-offset: 2px;
+  }
+  
+  &:checked + .checkbox {
+    background-color: $trk-brand;
+    border-color: $trk-brand;
+  }
+}
+
+.checkIcon {
+  color: white;
+  opacity: 0;
+  transform: scale(0.5);
+  transition: 
+    opacity $trk-duration-fast $trk-ease-out,
+    transform $trk-duration-fast $trk-ease-out;
+  
+  .input:checked + .checkbox & {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.indeterminate .checkbox {
+  background-color: $trk-brand;
+  border-color: $trk-brand;
+  
+  .checkIcon {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.hasError .checkbox {
+  border-color: $trk-red;
+  
+  .input:focus-visible + & {
+    outline-color: $trk-red;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: $trk-space-1;
+  padding-top: 1px;
+}
+
+.label {
+  font-family: $trk-font-family-primary;
+  font-weight: $trk-font-weight-normal;
+  color: $trk-text;
+  line-height: $trk-line-height-tight;
+}
+
+.size-sm .label { font-size: $trk-font-size-sm; }
+.size-md .label { font-size: $trk-font-size-base; }
+.size-lg .label { font-size: $trk-font-size-lg; }
+
+.helperText {
+  margin: 0;
+  font-family: $trk-font-family-primary;
+  font-size: $trk-font-size-xs;
+  color: $trk-text-soft;
+}
+
+.errorText {
+  color: $trk-red;
+}

@@ -1,0 +1,367 @@
+/**
+ * Tråkke Design System – Nordisk Ro
+ * CSS Reset
+ *
+ * Modern CSS reset optimized for map-based outdoor applications.
+ */
+
+/* ==========================================================================
+   BOX SIZING
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+   ROOT & BODY
+   ========================================================================== */
+
+:root {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+  -moz-tab-size: 4;
+  tab-size: 4;
+}
+
+html {
+  line-height: 1.5;
+  font-family: var(--trk-font-body);
+  color: var(--trk-text);
+  background-color: var(--trk-bg);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  line-height: inherit;
+}
+
+/* ==========================================================================
+   TYPOGRAPHY
+   ========================================================================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+p {
+  margin: 0;
+}
+
+/* ==========================================================================
+   LISTS
+   ========================================================================== */
+
+ol,
+ul,
+menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* ==========================================================================
+   MEDIA
+   ========================================================================== */
+
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  display: block;
+  vertical-align: middle;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ==========================================================================
+   FORMS
+   ========================================================================== */
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  font-feature-settings: inherit;
+  font-variation-settings: inherit;
+  font-size: 100%;
+  font-weight: inherit;
+  line-height: inherit;
+  color: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+button,
+select {
+  text-transform: none;
+}
+
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+  -webkit-appearance: button;
+  background-color: transparent;
+  background-image: none;
+}
+
+:-moz-focusring {
+  outline: auto;
+}
+
+:-moz-ui-invalid {
+  box-shadow: none;
+}
+
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+  height: auto;
+}
+
+[type='search'] {
+  -webkit-appearance: textfield;
+  outline-offset: -2px;
+}
+
+::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  font: inherit;
+}
+
+/* ==========================================================================
+   INTERACTIVE ELEMENTS
+   ========================================================================== */
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+}
+
+[role="button"] {
+  cursor: pointer;
+}
+
+:disabled {
+  cursor: default;
+}
+
+/* ==========================================================================
+   TABLE
+   ========================================================================== */
+
+table {
+  text-indent: 0;
+  border-color: inherit;
+  border-collapse: collapse;
+}
+
+/* ==========================================================================
+   HR & BORDERS
+   ========================================================================== */
+
+hr {
+  height: 0;
+  color: inherit;
+  border-top-width: 1px;
+  margin: 0;
+}
+
+/* ==========================================================================
+   ABBR
+   ========================================================================== */
+
+abbr:where([title]) {
+  text-decoration: underline dotted;
+}
+
+/* ==========================================================================
+   CODE
+   ========================================================================== */
+
+code,
+kbd,
+samp,
+pre {
+  font-family: var(--trk-font-mono);
+  font-feature-settings: normal;
+  font-variation-settings: normal;
+  font-size: 1em;
+}
+
+/* ==========================================================================
+   SUB & SUP
+   ========================================================================== */
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* ==========================================================================
+   DIALOG
+   ========================================================================== */
+
+dialog {
+  padding: 0;
+}
+
+/* ==========================================================================
+   SUMMARY
+   ========================================================================== */
+
+summary {
+  display: list-item;
+}
+
+/* ==========================================================================
+   FIELDSET & LEGEND
+   ========================================================================== */
+
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+legend {
+  padding: 0;
+}
+
+/* ==========================================================================
+   PROGRESS
+   ========================================================================== */
+
+progress {
+  vertical-align: baseline;
+}
+
+/* ==========================================================================
+   HIDDEN
+   ========================================================================== */
+
+[hidden] {
+  display: none !important;
+}
+
+/* ==========================================================================
+   FOCUS STYLES
+   ========================================================================== */
+
+:focus-visible {
+  outline: 2px solid var(--trk-blue);
+  outline-offset: 2px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ==========================================================================
+   SELECTION
+   ========================================================================== */
+
+::selection {
+  background-color: var(--trk-selection);
+  color: var(--trk-text);
+}
+
+/* ==========================================================================
+   SCROLLBAR
+   ========================================================================== */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--trk-border-strong);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--trk-text-soft);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--trk-border-strong) transparent;
+}
+
+/* ==========================================================================
+   TOUCH OPTIMIZATIONS
+   ========================================================================== */
+
+@media (hover: none) and (pointer: coarse) {
+  /* Larger tap targets on touch devices */
+  button,
+  [role="button"],
+  input,
+  select,
+  textarea,
+  a {
+    min-height: var(--trk-touch-min);
+  }
+}
+
+/* ==========================================================================
+   PRINT
+   ========================================================================== */
+
+@media print {
+  * {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+}

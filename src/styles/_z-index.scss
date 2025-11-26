@@ -1,0 +1,90 @@
+// ============================================================================
+// TRÅKKE DESIGN SYSTEM - Z-INDEX SCALE
+// Strukturert lag-system for konsistent stacking
+// ============================================================================
+
+// Base layers (content)
+$trk-z-base: 0;
+$trk-z-content: 1;
+
+// Interactive elements
+$trk-z-dropdown: 100;
+$trk-z-sticky: 200;
+$trk-z-fixed: 300;
+
+// Map-specific layers
+$trk-z-map-base: 0;
+$trk-z-map-tiles: 1;
+$trk-z-map-overlays: 10;
+$trk-z-map-markers: 20;
+$trk-z-map-popups: 30;
+$trk-z-map-controls: 400;
+
+// UI layers
+$trk-z-header: 500;
+$trk-z-fab: 600;
+$trk-z-drawer: 700;
+$trk-z-sheet: 800;
+$trk-z-modal-backdrop: 900;
+$trk-z-modal: 1000;
+$trk-z-popover: 1100;
+$trk-z-tooltip: 1200;
+$trk-z-notification: 1300;
+$trk-z-toast: 1400;
+
+// Top-most layers
+$trk-z-loading: 9000;
+$trk-z-max: 9999;
+
+// Z-index map for iteration
+$trk-z-indices: (
+  base: $trk-z-base,
+  content: $trk-z-content,
+  dropdown: $trk-z-dropdown,
+  sticky: $trk-z-sticky,
+  fixed: $trk-z-fixed,
+  map-controls: $trk-z-map-controls,
+  header: $trk-z-header,
+  fab: $trk-z-fab,
+  drawer: $trk-z-drawer,
+  sheet: $trk-z-sheet,
+  modal-backdrop: $trk-z-modal-backdrop,
+  modal: $trk-z-modal,
+  popover: $trk-z-popover,
+  tooltip: $trk-z-tooltip,
+  notification: $trk-z-notification,
+  toast: $trk-z-toast,
+  loading: $trk-z-loading,
+  max: $trk-z-max
+);
+
+// Helper function
+@function z($layer) {
+  @if map-has-key($trk-z-indices, $layer) {
+    @return map-get($trk-z-indices, $layer);
+  }
+  @warn "Unknown z-index layer: #{$layer}";
+  @return null;
+}
+
+// CSS custom properties export
+:root {
+  --trk-z-base: #{$trk-z-base};
+  --trk-z-content: #{$trk-z-content};
+  --trk-z-dropdown: #{$trk-z-dropdown};
+  --trk-z-sticky: #{$trk-z-sticky};
+  --trk-z-fixed: #{$trk-z-fixed};
+  --trk-z-map-controls: #{$trk-z-map-controls};
+  --trk-z-header: #{$trk-z-header};
+  --trk-z-fab: #{$trk-z-fab};
+  --trk-z-drawer: #{$trk-z-drawer};
+  --trk-z-sheet: #{$trk-z-sheet};
+  --trk-z-modal-backdrop: #{$trk-z-modal-backdrop};
+  --trk-z-modal: #{$trk-z-modal};
+  --trk-z-popover: #{$trk-z-popover};
+  --trk-z-tooltip: #{$trk-z-tooltip};
+  --trk-z-notification: #{$trk-z-notification};
+  --trk-z-toast: #{$trk-z-toast};
+  --trk-z-loading: #{$trk-z-loading};
+  --trk-z-max: #{$trk-z-max};
+}

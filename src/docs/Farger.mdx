@@ -1,0 +1,141 @@
+import { Meta, ColorPalette, ColorItem } from '@storybook/blocks';
+
+<Meta title="Design Tokens/Farger" />
+
+# Farger
+
+Tråkkes fargepalett er inspirert av norsk natur og friluftsliv.
+
+## Brand
+
+Hovedfargen representerer den norske skogen og naturen.
+
+<ColorPalette>
+  <ColorItem
+    title="Brand"
+    subtitle="Primærfarge"
+    colors={{
+      'brand': '#3e4533',
+      'brand-light': '#4d5640',
+      'brand-dark': '#2f3427',
+      'brand-tint': '#e8eae4',
+    }}
+  />
+</ColorPalette>
+
+## Nøytrale
+
+Bakgrunner, overflater og tekst.
+
+<ColorPalette>
+  <ColorItem
+    title="Bakgrunn"
+    colors={{
+      'bg': '#fafaf7',
+      'surface': '#ffffff',
+      'surface-subtle': '#f5f5f2',
+    }}
+  />
+  <ColorItem
+    title="Tekst"
+    colors={{
+      'text': '#1a1d1b',
+      'text-muted': '#4a4f4c',
+      'text-soft': '#6b716e',
+    }}
+  />
+  <ColorItem
+    title="Kantlinjer"
+    colors={{
+      'border': '#e0e2dd',
+      'border-subtle': '#ebeee9',
+      'border-strong': '#c8ccc5',
+    }}
+  />
+</ColorPalette>
+
+## Funksjonelle farger
+
+Farger med spesifikke betydninger i grensesnittet.
+
+<ColorPalette>
+  <ColorItem
+    title="Blå - GPS/Interaktiv"
+    subtitle="Brukes for GPS-posisjon, lenker og interaktive elementer"
+    colors={{
+      'blue': '#1e6ce0',
+      'blue-light': '#e8f1fc',
+      'blue-dark': '#1555b5',
+    }}
+  />
+  <ColorItem
+    title="Rød - Waypoints/Feil"
+    subtitle="Brukes for waypoints, feilmeldinger og farlige handlinger"
+    colors={{
+      'red': '#d0443e',
+      'red-light': '#fbeaea',
+      'red-dark': '#a63632',
+    }}
+  />
+  <ColorItem
+    title="Grønn - Suksess"
+    subtitle="Brukes for suksessmeldinger og bekreftelser"
+    colors={{
+      'green': '#2e9e5b',
+      'green-light': '#e6f5ec',
+      'green-dark': '#247a47',
+    }}
+  />
+  <ColorItem
+    title="Gul - Advarsel"
+    subtitle="Brukes for advarsler og viktig informasjon"
+    colors={{
+      'yellow': '#e6a817',
+      'yellow-light': '#fcf5e3',
+      'yellow-dark': '#b88613',
+    }}
+  />
+</ColorPalette>
+
+## Bruk i kode
+
+### SCSS
+
+```scss
+@use '@trakke/design-system/styles/colors' as *;
+
+.my-element {
+  background-color: $trk-brand;
+  color: $trk-text;
+  border: 1px solid $trk-border;
+}
+```
+
+### CSS Custom Properties
+
+```css
+.my-element {
+  background-color: var(--trk-brand);
+  color: var(--trk-text);
+  border: 1px solid var(--trk-border);
+}
+```
+
+### JavaScript/TypeScript
+
+```tsx
+import { colors } from '@trakke/design-system/tokens';
+
+const style = {
+  backgroundColor: colors.brand,
+  color: colors.text,
+};
+```
+
+## Kontrastkrav
+
+Alle fargekombinasjoner oppfyller WCAG 2.1 AA-krav for kontrast:
+
+- Normal tekst: minimum 4.5:1
+- Stor tekst: minimum 3:1
+- UI-komponenter: minimum 3:1

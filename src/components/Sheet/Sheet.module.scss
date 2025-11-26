@@ -1,0 +1,151 @@
+/**
+ * TRÅKKE DESIGNSYSTEM
+ * Sheet Component Styles
+ */
+
+@use '../../styles/colors' as *;
+@use '../../styles/spacing' as *;
+@use '../../styles/typography' as *;
+@use '../../styles/borders' as *;
+@use '../../styles/shadows' as *;
+@use '../../styles/animations' as *;
+@use '../../styles/z-index' as *;
+@use '../../styles/breakpoints' as *;
+
+.container {
+  position: fixed;
+  inset: 0;
+  z-index: $trk-z-sheet;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  
+  @include desktop-up {
+    align-items: center;
+  }
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  animation: trk-fade-in $trk-duration-normal $trk-ease-out;
+}
+
+.sheet {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-height: 90vh;
+  background-color: $trk-surface;
+  border-radius: $trk-radius-sheet $trk-radius-sheet 0 0;
+  box-shadow: $trk-shadow-soft-lg;
+  animation: trk-sheet-slide-up $trk-duration-slow $trk-ease-out;
+  
+  @include desktop-up {
+    max-width: 560px;
+    max-height: 85vh;
+    border-radius: $trk-radius-modal;
+    animation: trk-scale-in $trk-duration-normal $trk-ease-spring;
+  }
+}
+
+@include mobile-only {
+  .height-peek { height: 25vh; min-height: 200px; }
+  .height-half { height: 50vh; min-height: 300px; }
+  .height-full { height: 90vh; }
+  .height-auto { height: auto; max-height: 90vh; }
+}
+
+.dragging {
+  transition: none;
+  user-select: none;
+}
+
+.handleArea {
+  display: flex;
+  justify-content: center;
+  padding: $trk-space-3 $trk-space-4 $trk-space-2;
+  cursor: grab;
+  touch-action: none;
+  
+  &:active { cursor: grabbing; }
+  
+  @include desktop-up { display: none; }
+}
+
+.handle {
+  width: 36px;
+  height: 4px;
+  background-color: $trk-border-strong;
+  border-radius: $trk-radius-full;
+  transition: background-color $trk-duration-fast $trk-ease-out;
+  
+  .handleArea:hover & { background-color: $trk-text-soft; }
+}
+
+.header {
+  flex-shrink: 0;
+  padding: $trk-space-3 $trk-space-4;
+  border-bottom: 1px solid $trk-border;
+  
+  @include desktop-up { padding: $trk-space-4 $trk-space-6; }
+}
+
+.headerContent {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: $trk-space-3;
+}
+
+.titles { flex: 1; min-width: 0; }
+
+.title {
+  margin: 0;
+  font-size: $trk-font-size-lg;
+  font-weight: $trk-font-weight-semibold;
+  color: $trk-text;
+  line-height: $trk-line-height-tight;
+  
+  @include desktop-up { font-size: $trk-font-size-xl; }
+}
+
+.subtitle {
+  margin: $trk-space-1 0 0;
+  font-size: $trk-font-size-sm;
+  color: $trk-text-muted;
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: $trk-space-2;
+  flex-shrink: 0;
+}
+
+.closeButton { margin: -$trk-space-1; }
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: $trk-space-4;
+  
+  @include desktop-up { padding: $trk-space-5 $trk-space-6; }
+}
+
+.noScroll { overflow: hidden; }
+
+.footer {
+  flex-shrink: 0;
+  display: flex;
+  gap: $trk-space-3;
+  padding: $trk-space-4;
+  border-top: 1px solid $trk-border;
+  background-color: $trk-surface;
+  padding-bottom: calc($trk-space-4 + env(safe-area-inset-bottom, 0px));
+  
+  @include desktop-up { padding: $trk-space-4 $trk-space-6; }
+}

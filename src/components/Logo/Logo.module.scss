@@ -1,0 +1,39 @@
+/**
+ * TRÅKKE DESIGNSYSTEM
+ * Logo Component Styles
+ */
+
+@use '../../styles/colors' as *;
+@use '../../styles/spacing' as *;
+@use '../../styles/typography' as *;
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: $trk-space-2;
+  text-decoration: none;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.text {
+  font-family: $trk-font-family-primary;
+  font-weight: $trk-font-weight-light;
+  letter-spacing: 0.02em;
+}
+
+.color-brand {
+  color: $trk-brand;
+}
+
+.color-white {
+  color: white;
+}
+
+.color-dark {
+  color: $trk-text;
+}

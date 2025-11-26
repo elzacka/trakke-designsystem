@@ -1,0 +1,45 @@
+@use '../../styles/colors' as *;
+@use '../../styles/typography' as *;
+
+.text { font-family: $trk-font-family-primary; margin: 0; }
+
+// Variants
+.variant-display-lg { font-size: $trk-font-size-6xl; font-weight: $trk-font-weight-light; line-height: $trk-line-height-tight; letter-spacing: -0.02em; }
+.variant-display-md { font-size: $trk-font-size-5xl; font-weight: $trk-font-weight-light; line-height: $trk-line-height-tight; letter-spacing: -0.02em; }
+.variant-display-sm { font-size: $trk-font-size-4xl; font-weight: $trk-font-weight-light; line-height: $trk-line-height-tight; letter-spacing: -0.02em; }
+.variant-heading-1 { font-size: $trk-font-size-3xl; font-weight: $trk-font-weight-semibold; line-height: $trk-line-height-snug; }
+.variant-heading-2 { font-size: $trk-font-size-2xl; font-weight: $trk-font-weight-semibold; line-height: $trk-line-height-snug; }
+.variant-heading-3 { font-size: $trk-font-size-xl; font-weight: $trk-font-weight-medium; line-height: $trk-line-height-snug; }
+.variant-heading-4 { font-size: $trk-font-size-lg; font-weight: $trk-font-weight-medium; line-height: $trk-line-height-snug; }
+.variant-body-lg { font-size: $trk-font-size-lg; font-weight: $trk-font-weight-normal; line-height: $trk-line-height-relaxed; }
+.variant-body-md { font-size: $trk-font-size-base; font-weight: $trk-font-weight-normal; line-height: $trk-line-height-normal; }
+.variant-body-sm { font-size: $trk-font-size-sm; font-weight: $trk-font-weight-normal; line-height: $trk-line-height-normal; }
+.variant-label-lg { font-size: $trk-font-size-md; font-weight: $trk-font-weight-medium; line-height: $trk-line-height-tight; letter-spacing: 0.02em; }
+.variant-label-md { font-size: $trk-font-size-sm; font-weight: $trk-font-weight-medium; line-height: $trk-line-height-tight; letter-spacing: 0.02em; }
+.variant-label-sm { font-size: $trk-font-size-xs; font-weight: $trk-font-weight-medium; line-height: $trk-line-height-tight; letter-spacing: 0.04em; }
+.variant-caption { font-size: $trk-font-size-xs; font-weight: $trk-font-weight-normal; line-height: $trk-line-height-normal; }
+
+// Colors
+.color-default { color: $trk-text; }
+.color-muted { color: $trk-text-muted; }
+.color-soft { color: $trk-text-soft; }
+.color-brand { color: $trk-brand; }
+.color-success { color: $trk-green; }
+.color-warning { color: $trk-yellow-dark; }
+.color-danger { color: $trk-red; }
+.color-inherit { color: inherit; }
+
+// Weights
+.weight-light { font-weight: $trk-font-weight-light; }
+.weight-normal { font-weight: $trk-font-weight-normal; }
+.weight-medium { font-weight: $trk-font-weight-medium; }
+.weight-semibold { font-weight: $trk-font-weight-semibold; }
+.weight-bold { font-weight: $trk-font-weight-bold; }
+
+// Alignment
+.align-left { text-align: left; }
+.align-center { text-align: center; }
+.align-right { text-align: right; }
+
+// Truncate
+.truncate { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }

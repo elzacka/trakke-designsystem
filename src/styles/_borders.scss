@@ -1,0 +1,60 @@
+// ============================================================================
+// TRÅKKE DESIGNSYSTEM - BORDERS & RADIUS
+// ============================================================================
+
+// Border widths
+$trk-border-width-0: 0;
+$trk-border-width-1: 1px;
+$trk-border-width-2: 2px;
+$trk-border-width-3: 3px;
+$trk-border-width-4: 4px;
+
+// Border radius scale
+$trk-radius-none: 0;
+$trk-radius-xs: 4px;
+$trk-radius-sm: 8px;
+$trk-radius-md: 12px;
+$trk-radius-lg: 16px;
+$trk-radius-xl: 20px;
+$trk-radius-2xl: 24px;
+$trk-radius-3xl: 32px;
+$trk-radius-full: 9999px;
+
+// Component-specific radii
+$trk-radius-button: $trk-radius-md;
+$trk-radius-button-sm: $trk-radius-sm;
+$trk-radius-button-lg: $trk-radius-lg;
+$trk-radius-input: $trk-radius-sm;
+$trk-radius-card: $trk-radius-lg;
+$trk-radius-sheet: $trk-radius-xl;
+$trk-radius-modal: $trk-radius-2xl;
+$trk-radius-fab: $trk-radius-lg;
+$trk-radius-badge: $trk-radius-full;
+$trk-radius-chip: $trk-radius-full;
+$trk-radius-tooltip: $trk-radius-sm;
+
+// CSS custom properties export
+:root {
+  --trk-border-width-0: #{$trk-border-width-0};
+  --trk-border-width-1: #{$trk-border-width-1};
+  --trk-border-width-2: #{$trk-border-width-2};
+  --trk-border-width-3: #{$trk-border-width-3};
+  --trk-border-width-4: #{$trk-border-width-4};
+  
+  --trk-radius-none: #{$trk-radius-none};
+  --trk-radius-xs: #{$trk-radius-xs};
+  --trk-radius-sm: #{$trk-radius-sm};
+  --trk-radius-md: #{$trk-radius-md};
+  --trk-radius-lg: #{$trk-radius-lg};
+  --trk-radius-xl: #{$trk-radius-xl};
+  --trk-radius-2xl: #{$trk-radius-2xl};
+  --trk-radius-3xl: #{$trk-radius-3xl};
+  --trk-radius-full: #{$trk-radius-full};
+  
+  --trk-radius-button: #{$trk-radius-button};
+  --trk-radius-input: #{$trk-radius-input};
+  --trk-radius-card: #{$trk-radius-card};
+  --trk-radius-sheet: #{$trk-radius-sheet};
+  --trk-radius-modal: #{$trk-radius-modal};
+  --trk-radius-fab: #{$trk-radius-fab};
+}

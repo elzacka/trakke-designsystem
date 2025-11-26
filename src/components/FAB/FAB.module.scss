@@ -1,0 +1,243 @@
+/**
+ * TRÅKKE DESIGNSYSTEM
+ * FAB Component Styles
+ */
+
+@use '../../styles/colors' as *;
+@use '../../styles/spacing' as *;
+@use '../../styles/typography' as *;
+@use '../../styles/borders' as *;
+@use '../../styles/shadows' as *;
+@use '../../styles/animations' as *;
+@use '../../styles/z-index' as *;
+@use '../../styles/breakpoints' as *;
+
+.container {
+  position: fixed;
+  z-index: $trk-z-fab;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: $trk-space-3;
+}
+
+.position-bottom-right {
+  bottom: $trk-space-4;
+  right: $trk-space-4;
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
+.position-bottom-left {
+  bottom: $trk-space-4;
+  left: $trk-space-4;
+  align-items: flex-start;
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
+.position-bottom-center {
+  bottom: $trk-space-4;
+  left: 50%;
+  transform: translateX(-50%);
+  align-items: center;
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
+.position-top-right {
+  top: $trk-space-4;
+  right: $trk-space-4;
+  flex-direction: column-reverse;
+}
+
+.position-top-left {
+  top: $trk-space-4;
+  left: $trk-space-4;
+  flex-direction: column-reverse;
+  align-items: flex-start;
+}
+
+.mainButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: $trk-radius-fab;
+  cursor: pointer;
+  box-shadow: $trk-shadow-elevated;
+  transition: 
+    background-color $trk-duration-fast $trk-ease-out,
+    box-shadow $trk-duration-fast $trk-ease-out,
+    transform $trk-duration-fast $trk-ease-out;
+  
+  &:hover {
+    box-shadow: $trk-shadow-elevated-hover;
+  }
+  
+  &:active {
+    transform: scale(0.95);
+  }
+  
+  &:focus-visible {
+    outline: none;
+    box-shadow: $trk-shadow-elevated, $trk-shadow-focus;
+  }
+}
+
+.size-sm {
+  width: 40px;
+  height: 40px;
+}
+
+.size-md {
+  width: 56px;
+  height: 56px;
+}
+
+.size-lg {
+  width: 64px;
+  height: 64px;
+}
+
+.variant-primary {
+  background-color: $trk-brand;
+  color: white;
+  
+  &:hover {
+    background-color: $trk-brand-dark;
+  }
+  
+  // Filled icon for primary FAB
+  :global(.material-symbols-outlined) {
+    font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+}
+
+.variant-secondary {
+  background-color: $trk-surface;
+  color: $trk-text;
+  
+  &:hover {
+    background-color: $trk-surface-subtle;
+  }
+}
+
+.variant-surface {
+  background-color: $trk-surface;
+  color: $trk-brand;
+  
+  &:hover {
+    background-color: $trk-brand-tint;
+  }
+}
+
+.mainButton.open {
+  .icon {
+    transform: rotate(180deg);
+  }
+}
+
+.icon {
+  transition: transform $trk-duration-normal $trk-ease-out;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: $trk-space-2;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: 
+    opacity $trk-duration-normal $trk-ease-out,
+    visibility $trk-duration-normal $trk-ease-out,
+    transform $trk-duration-normal $trk-ease-out;
+}
+
+.menuOpen {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: $trk-space-1;
+  
+  & + & {
+    margin-top: $trk-space-2;
+    padding-top: $trk-space-2;
+    border-top: 1px solid $trk-border;
+  }
+}
+
+.menuItem {
+  display: flex;
+  align-items: center;
+  gap: $trk-space-3;
+  padding: $trk-space-2 $trk-space-3;
+  background-color: $trk-surface;
+  border: none;
+  border-radius: $trk-radius-full;
+  box-shadow: $trk-shadow-md;
+  cursor: pointer;
+  white-space: nowrap;
+  opacity: 0;
+  transform: scale(0.8) translateY(8px);
+  animation: trk-fab-item-enter $trk-duration-normal $trk-ease-spring forwards;
+  transition: 
+    background-color $trk-duration-fast $trk-ease-out,
+    box-shadow $trk-duration-fast $trk-ease-out;
+  
+  &:hover:not(.disabled) {
+    background-color: $trk-surface-subtle;
+    box-shadow: $trk-shadow-lg;
+  }
+  
+  &:focus-visible {
+    outline: none;
+    box-shadow: $trk-shadow-md, $trk-shadow-focus;
+  }
+  
+  &:active:not(.disabled) {
+    transform: scale(0.98);
+  }
+}
+
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.menuItemIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background-color: $trk-brand-tint;
+  border-radius: $trk-radius-full;
+  color: $trk-brand;
+  
+  // Match Tråkke PWA icon styling - outlined with weight 200
+  :global(.material-symbols-outlined) {
+    font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' -25, 'opsz' 20;
+  }
+}
+
+.menuItemLabel {
+  font-size: $trk-font-size-sm;
+  font-weight: $trk-font-weight-medium;
+  color: $trk-text;
+  padding-right: $trk-space-2;
+}
+
+@keyframes trk-fab-item-enter {
+  from {
+    opacity: 0;
+    transform: scale(0.8) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}

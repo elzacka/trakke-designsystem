@@ -1,0 +1,102 @@
+// ============================================================================
+// TRÅKKE DESIGNSYSTEM - COLORS
+// "Nordisk ro" - Inspirert av norsk natur og friluftsliv
+// ============================================================================
+
+// Brand Colors - Skoggrønn
+$trk-brand: #3e4533;
+$trk-brand-light: #4d5640;
+$trk-brand-dark: #2f3427;
+$trk-brand-tint: #e8eae4;
+
+// Neutral Colors - Bakgrunn og overflater
+$trk-bg: #fafaf7;
+$trk-surface: #ffffff;
+$trk-surface-subtle: #f5f5f2;
+
+// Text Colors
+$trk-text: #1a1d1b;
+$trk-text-muted: #4a4f4c;
+$trk-text-soft: #6b716e;
+
+// Border Colors
+$trk-border: #e0e2dd;
+$trk-border-subtle: #ebeee9;
+$trk-border-strong: #c8ccc5;
+
+// Functional Colors - Blue (GPS, interaktiv)
+$trk-blue: #1e6ce0;
+$trk-blue-light: #e8f1fc;
+$trk-blue-dark: #1555b5;
+
+// Functional Colors - Red (waypoints, feil)
+$trk-red: #d0443e;
+$trk-red-light: #fbeaea;
+$trk-red-dark: #a63632;
+
+// Functional Colors - Green (suksess)
+$trk-green: #2e9e5b;
+$trk-green-light: #e6f5ec;
+$trk-green-dark: #247a47;
+
+// Functional Colors - Yellow (advarsel)
+$trk-yellow: #e6a817;
+$trk-yellow-light: #fcf5e3;
+$trk-yellow-dark: #b88613;
+
+// Overlay Colors
+$trk-overlay: rgba(26, 29, 27, 0.5);
+$trk-overlay-light: rgba(26, 29, 27, 0.3);
+
+// Map-specific Colors
+$trk-gps-accuracy: rgba(30, 108, 224, 0.15);
+$trk-route-line: #1e6ce0;
+$trk-waypoint-marker: #d0443e;
+
+// CSS Custom Properties Export
+:root {
+  // Brand
+  --trk-brand: #{$trk-brand};
+  --trk-brand-light: #{$trk-brand-light};
+  --trk-brand-dark: #{$trk-brand-dark};
+  --trk-brand-tint: #{$trk-brand-tint};
+  
+  // Neutrals
+  --trk-bg: #{$trk-bg};
+  --trk-surface: #{$trk-surface};
+  --trk-surface-subtle: #{$trk-surface-subtle};
+  
+  // Text
+  --trk-text: #{$trk-text};
+  --trk-text-muted: #{$trk-text-muted};
+  --trk-text-soft: #{$trk-text-soft};
+  
+  // Borders
+  --trk-border: #{$trk-border};
+  --trk-border-subtle: #{$trk-border-subtle};
+  --trk-border-strong: #{$trk-border-strong};
+  
+  // Blue
+  --trk-blue: #{$trk-blue};
+  --trk-blue-light: #{$trk-blue-light};
+  --trk-blue-dark: #{$trk-blue-dark};
+  
+  // Red
+  --trk-red: #{$trk-red};
+  --trk-red-light: #{$trk-red-light};
+  --trk-red-dark: #{$trk-red-dark};
+  
+  // Green
+  --trk-green: #{$trk-green};
+  --trk-green-light: #{$trk-green-light};
+  --trk-green-dark: #{$trk-green-dark};
+  
+  // Yellow
+  --trk-yellow: #{$trk-yellow};
+  --trk-yellow-light: #{$trk-yellow-light};
+  --trk-yellow-dark: #{$trk-yellow-dark};
+  
+  // Overlay
+  --trk-overlay: #{$trk-overlay};
+  --trk-overlay-light: #{$trk-overlay-light};
+}

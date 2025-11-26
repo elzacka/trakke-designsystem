@@ -1,0 +1,242 @@
+/**
+ * Tråkke Design System – Nordisk Ro
+ * Button Styles
+ */
+
+/* ==========================================================================
+   BASE BUTTON
+   ========================================================================== */
+
+.trk-button {
+  /* Reset */
+  appearance: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: inherit;
+
+  /* Layout */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+
+  /* Typography */
+  font-family: var(--trk-font-body);
+  font-weight: var(--trk-font-medium);
+  line-height: var(--trk-leading-tight);
+  text-decoration: none;
+  white-space: nowrap;
+
+  /* Visual */
+  border-radius: var(--radius-lg);
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    transform var(--transition-fast),
+    opacity var(--transition-fast);
+
+  /* Touch */
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.trk-button:focus-visible {
+  outline: 2px solid var(--trk-blue);
+  outline-offset: 2px;
+}
+
+.trk-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* ==========================================================================
+   SIZES
+   ========================================================================== */
+
+.trk-button--sm {
+  min-height: var(--trk-touch-compact);
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--trk-text-sm);
+}
+
+.trk-button--md {
+  min-height: var(--trk-touch-min);
+  padding: var(--space-2\.5) var(--space-4);
+  font-size: var(--trk-text-base);
+}
+
+.trk-button--lg {
+  min-height: var(--trk-touch-comfortable);
+  padding: var(--space-3) var(--space-5);
+  font-size: var(--trk-text-lg);
+}
+
+/* ==========================================================================
+   VARIANTS
+   ========================================================================== */
+
+/* Primary */
+.trk-button--primary {
+  background-color: var(--trk-brand);
+  color: var(--trk-text-inverse);
+}
+
+.trk-button--primary:hover:not(:disabled) {
+  background-color: var(--trk-brand-soft);
+  transform: translateY(-1px);
+  box-shadow: var(--trk-shadow-button);
+}
+
+.trk-button--primary:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: var(--trk-shadow-button-pressed);
+}
+
+/* Secondary */
+.trk-button--secondary {
+  background-color: transparent;
+  color: var(--trk-text);
+  border: 1px solid var(--trk-border);
+}
+
+.trk-button--secondary:hover:not(:disabled) {
+  background-color: var(--trk-surface-subtle);
+  border-color: var(--trk-border-strong);
+}
+
+.trk-button--secondary:active:not(:disabled) {
+  background-color: var(--trk-border);
+}
+
+/* Ghost */
+.trk-button--ghost {
+  background-color: transparent;
+  color: var(--trk-text);
+}
+
+.trk-button--ghost:hover:not(:disabled) {
+  background-color: var(--trk-surface-subtle);
+}
+
+.trk-button--ghost:active:not(:disabled) {
+  background-color: var(--trk-border);
+}
+
+/* Destructive */
+.trk-button--destructive {
+  background-color: var(--trk-red);
+  color: var(--trk-text-inverse);
+}
+
+.trk-button--destructive:hover:not(:disabled) {
+  background-color: var(--trk-red-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(208, 68, 62, 0.25);
+}
+
+.trk-button--destructive:active:not(:disabled) {
+  background-color: var(--trk-red-active);
+  transform: translateY(0);
+}
+
+.trk-button--destructive:focus-visible {
+  outline-color: var(--trk-red);
+}
+
+/* Success */
+.trk-button--success {
+  background-color: var(--trk-green);
+  color: var(--trk-text-inverse);
+}
+
+.trk-button--success:hover:not(:disabled) {
+  background-color: var(--trk-green-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(46, 158, 91, 0.25);
+}
+
+.trk-button--success:active:not(:disabled) {
+  background-color: var(--trk-green-active);
+  transform: translateY(0);
+}
+
+.trk-button--success:focus-visible {
+  outline-color: var(--trk-green);
+}
+
+/* ==========================================================================
+   MODIFIERS
+   ========================================================================== */
+
+.trk-button--full-width {
+  width: 100%;
+}
+
+.trk-button--loading {
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   CHILDREN
+   ========================================================================== */
+
+.trk-button__text {
+  flex: 1 0 auto;
+}
+
+.trk-button__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.trk-button__icon--start {
+  margin-right: calc(var(--space-1) * -1);
+}
+
+.trk-button__icon--end {
+  margin-left: calc(var(--space-1) * -1);
+}
+
+.trk-button__icon .material-symbols-outlined {
+  font-size: 20px;
+}
+
+.trk-button--lg .trk-button__icon .material-symbols-outlined {
+  font-size: 24px;
+}
+
+/* ==========================================================================
+   SPINNER
+   ========================================================================== */
+
+.trk-button__spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.trk-button__spinner-svg {
+  width: 20px;
+  height: 20px;
+  animation: spin var(--duration-1000) linear infinite;
+}
+
+.trk-button--lg .trk-button__spinner-svg {
+  width: 24px;
+  height: 24px;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

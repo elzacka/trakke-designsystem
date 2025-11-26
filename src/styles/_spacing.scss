@@ -1,0 +1,91 @@
+// ============================================================================
+// TRÅKKE DESIGNSYSTEM - SPACING
+// Basert på 8px grid system for konsistent spacing
+// ============================================================================
+
+// Base unit
+$trk-space-unit: 8px;
+
+// Spacing scale
+$trk-space-0: 0;
+$trk-space-1: 4px;    // 0.5x - micro spacing
+$trk-space-2: 8px;    // 1x - base unit
+$trk-space-3: 12px;   // 1.5x
+$trk-space-4: 16px;   // 2x
+$trk-space-5: 20px;   // 2.5x
+$trk-space-6: 24px;   // 3x
+$trk-space-7: 32px;   // 4x
+$trk-space-8: 40px;   // 5x
+$trk-space-9: 48px;   // 6x
+$trk-space-10: 56px;  // 7x
+$trk-space-11: 64px;  // 8x
+$trk-space-12: 80px;  // 10x
+$trk-space-13: 96px;  // 12x
+$trk-space-14: 128px; // 16x
+
+// Semantic spacing tokens
+$trk-space-xs: $trk-space-1;   // 4px
+$trk-space-sm: $trk-space-2;   // 8px
+$trk-space-md: $trk-space-3;   // 12px
+$trk-space-lg: $trk-space-4;   // 16px
+$trk-space-xl: $trk-space-6;   // 24px
+$trk-space-2xl: $trk-space-7;  // 32px
+$trk-space-3xl: $trk-space-9;  // 48px
+$trk-space-4xl: $trk-space-11; // 64px
+
+// Component-specific spacing
+$trk-button-padding-x: $trk-space-4;
+$trk-button-padding-y: $trk-space-3;
+$trk-button-gap: $trk-space-2;
+
+$trk-input-padding-x: $trk-space-3;
+$trk-input-padding-y: $trk-space-3;
+
+$trk-card-padding: $trk-space-4;
+$trk-card-gap: $trk-space-3;
+
+$trk-sheet-padding: $trk-space-4;
+$trk-sheet-padding-desktop: $trk-space-6;
+
+$trk-fab-size: 56px;
+$trk-fab-size-small: 40px;
+
+// Touch target minimum (WCAG AAA)
+$trk-touch-target-min: 44px;
+
+// Gap utilities
+$trk-gap-xs: $trk-space-1;
+$trk-gap-sm: $trk-space-2;
+$trk-gap-md: $trk-space-3;
+$trk-gap-lg: $trk-space-4;
+$trk-gap-xl: $trk-space-6;
+
+// CSS custom properties export
+:root {
+  --trk-space-0: #{$trk-space-0};
+  --trk-space-1: #{$trk-space-1};
+  --trk-space-2: #{$trk-space-2};
+  --trk-space-3: #{$trk-space-3};
+  --trk-space-4: #{$trk-space-4};
+  --trk-space-5: #{$trk-space-5};
+  --trk-space-6: #{$trk-space-6};
+  --trk-space-7: #{$trk-space-7};
+  --trk-space-8: #{$trk-space-8};
+  --trk-space-9: #{$trk-space-9};
+  --trk-space-10: #{$trk-space-10};
+  --trk-space-11: #{$trk-space-11};
+  --trk-space-12: #{$trk-space-12};
+  --trk-space-13: #{$trk-space-13};
+  --trk-space-14: #{$trk-space-14};
+  
+  --trk-space-xs: #{$trk-space-xs};
+  --trk-space-sm: #{$trk-space-sm};
+  --trk-space-md: #{$trk-space-md};
+  --trk-space-lg: #{$trk-space-lg};
+  --trk-space-xl: #{$trk-space-xl};
+  --trk-space-2xl: #{$trk-space-2xl};
+  --trk-space-3xl: #{$trk-space-3xl};
+  --trk-space-4xl: #{$trk-space-4xl};
+  
+  --trk-touch-target-min: #{$trk-touch-target-min};
+}

@@ -1,0 +1,87 @@
+// ============================================================================
+// TRÅKKE DESIGN SYSTEM - SHADOWS
+// Subtile, naturlige skygger inspirert av nordisk lys
+// ============================================================================
+
+// Shadow colors (using brand colors for warmth)
+$trk-shadow-color: rgba(62, 69, 51, 0.08);
+$trk-shadow-color-md: rgba(62, 69, 51, 0.12);
+$trk-shadow-color-lg: rgba(62, 69, 51, 0.16);
+$trk-shadow-color-dark: rgba(26, 29, 27, 0.24);
+
+// Elevation scale
+$trk-shadow-none: none;
+
+$trk-shadow-xs: 0 1px 2px 0 $trk-shadow-color;
+
+$trk-shadow-sm: 
+  0 1px 3px 0 $trk-shadow-color,
+  0 1px 2px -1px $trk-shadow-color;
+
+$trk-shadow-md: 
+  0 4px 6px -1px $trk-shadow-color-md,
+  0 2px 4px -2px $trk-shadow-color;
+
+$trk-shadow-lg: 
+  0 10px 15px -3px $trk-shadow-color-md,
+  0 4px 6px -4px $trk-shadow-color;
+
+$trk-shadow-xl: 
+  0 20px 25px -5px $trk-shadow-color-lg,
+  0 8px 10px -6px $trk-shadow-color-md;
+
+$trk-shadow-2xl: 
+  0 25px 50px -12px $trk-shadow-color-dark;
+
+// Inner shadows
+$trk-shadow-inner: inset 0 2px 4px 0 $trk-shadow-color;
+$trk-shadow-inner-lg: inset 0 4px 8px 0 $trk-shadow-color-md;
+
+// Soft shadows (for cards, sheets)
+$trk-shadow-soft: 
+  0 2px 8px -2px $trk-shadow-color-md,
+  0 4px 16px -4px $trk-shadow-color;
+
+$trk-shadow-soft-lg:
+  0 4px 12px -2px $trk-shadow-color-md,
+  0 8px 24px -4px $trk-shadow-color-lg;
+
+// Elevated shadows (for FAB, floating elements)
+$trk-shadow-elevated:
+  0 4px 8px -2px $trk-shadow-color-md,
+  0 8px 16px -4px $trk-shadow-color-lg;
+
+$trk-shadow-elevated-hover:
+  0 8px 16px -4px $trk-shadow-color-lg,
+  0 12px 24px -6px $trk-shadow-color-dark;
+
+// Focus ring shadow
+$trk-shadow-focus: 0 0 0 3px rgba(30, 108, 224, 0.4);
+$trk-shadow-focus-error: 0 0 0 3px rgba(208, 68, 62, 0.4);
+$trk-shadow-focus-success: 0 0 0 3px rgba(46, 158, 91, 0.4);
+
+// Map overlay shadow
+$trk-shadow-map-control:
+  0 2px 6px -1px rgba(26, 29, 27, 0.15),
+  0 4px 12px -2px rgba(26, 29, 27, 0.1);
+
+// CSS custom properties export
+:root {
+  --trk-shadow-none: #{$trk-shadow-none};
+  --trk-shadow-xs: #{$trk-shadow-xs};
+  --trk-shadow-sm: #{$trk-shadow-sm};
+  --trk-shadow-md: #{$trk-shadow-md};
+  --trk-shadow-lg: #{$trk-shadow-lg};
+  --trk-shadow-xl: #{$trk-shadow-xl};
+  --trk-shadow-2xl: #{$trk-shadow-2xl};
+  --trk-shadow-inner: #{$trk-shadow-inner};
+  --trk-shadow-inner-lg: #{$trk-shadow-inner-lg};
+  --trk-shadow-soft: #{$trk-shadow-soft};
+  --trk-shadow-soft-lg: #{$trk-shadow-soft-lg};
+  --trk-shadow-elevated: #{$trk-shadow-elevated};
+  --trk-shadow-elevated-hover: #{$trk-shadow-elevated-hover};
+  --trk-shadow-focus: #{$trk-shadow-focus};
+  --trk-shadow-focus-error: #{$trk-shadow-focus-error};
+  --trk-shadow-focus-success: #{$trk-shadow-focus-success};
+  --trk-shadow-map-control: #{$trk-shadow-map-control};
+}

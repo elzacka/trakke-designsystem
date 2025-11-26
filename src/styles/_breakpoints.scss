@@ -1,0 +1,131 @@
+// ============================================================================
+// TRÅKKE DESIGN SYSTEM - BREAKPOINTS
+// Mobile-first responsive design
+// ============================================================================
+
+// Breakpoint values
+$trk-breakpoint-xs: 0;
+$trk-breakpoint-sm: 480px;
+$trk-breakpoint-md: 768px;
+$trk-breakpoint-lg: 1024px;
+$trk-breakpoint-xl: 1280px;
+$trk-breakpoint-2xl: 1536px;
+
+// Breakpoint map for iteration
+$trk-breakpoints: (
+  xs: $trk-breakpoint-xs,
+  sm: $trk-breakpoint-sm,
+  md: $trk-breakpoint-md,
+  lg: $trk-breakpoint-lg,
+  xl: $trk-breakpoint-xl,
+  2xl: $trk-breakpoint-2xl
+);
+
+// Container max-widths
+$trk-container-sm: 640px;
+$trk-container-md: 768px;
+$trk-container-lg: 1024px;
+$trk-container-xl: 1280px;
+$trk-container-2xl: 1536px;
+
+// Responsive mixins
+@mixin breakpoint-up($name) {
+  $min: map-get($trk-breakpoints, $name);
+  @if $min {
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+@mixin breakpoint-down($name) {
+  $max: map-get($trk-breakpoints, $name) - 1px;
+  @media (max-width: $max) {
+    @content;
+  }
+}
+
+@mixin breakpoint-between($lower, $upper) {
+  $min: map-get($trk-breakpoints, $lower);
+  $max: map-get($trk-breakpoints, $upper) - 1px;
+  @media (min-width: $min) and (max-width: $max) {
+    @content;
+  }
+}
+
+// Common breakpoint shortcuts
+@mixin mobile-only {
+  @include breakpoint-down(lg) {
+    @content;
+  }
+}
+
+@mixin tablet-up {
+  @include breakpoint-up(md) {
+    @content;
+  }
+}
+
+@mixin desktop-up {
+  @include breakpoint-up(lg) {
+    @content;
+  }
+}
+
+@mixin large-desktop-up {
+  @include breakpoint-up(xl) {
+    @content;
+  }
+}
+
+// Touch device detection
+@mixin touch-device {
+  @media (hover: none) and (pointer: coarse) {
+    @content;
+  }
+}
+
+@mixin non-touch-device {
+  @media (hover: hover) and (pointer: fine) {
+    @content;
+  }
+}
+
+// Reduced motion preference
+@mixin reduced-motion {
+  @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
+}
+
+// High contrast preference
+@mixin high-contrast {
+  @media (prefers-contrast: high) {
+    @content;
+  }
+}
+
+// Dark mode preference
+@mixin dark-mode {
+  @media (prefers-color-scheme: dark) {
+    @content;
+  }
+}
+
+// CSS custom properties export
+:root {
+  --trk-breakpoint-xs: #{$trk-breakpoint-xs};
+  --trk-breakpoint-sm: #{$trk-breakpoint-sm};
+  --trk-breakpoint-md: #{$trk-breakpoint-md};
+  --trk-breakpoint-lg: #{$trk-breakpoint-lg};
+  --trk-breakpoint-xl: #{$trk-breakpoint-xl};
+  --trk-breakpoint-2xl: #{$trk-breakpoint-2xl};
+  
+  --trk-container-sm: #{$trk-container-sm};
+  --trk-container-md: #{$trk-container-md};
+  --trk-container-lg: #{$trk-container-lg};
+  --trk-container-xl: #{$trk-container-xl};
+  --trk-container-2xl: #{$trk-container-2xl};
+}

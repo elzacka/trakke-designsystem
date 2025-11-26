@@ -1,0 +1,194 @@
+/**
+ * TRÅKKE DESIGNSYSTEM
+ * Button Component Styles
+ */
+
+@use '../../styles/colors' as *;
+@use '../../styles/spacing' as *;
+@use '../../styles/typography' as *;
+@use '../../styles/borders' as *;
+@use '../../styles/shadows' as *;
+@use '../../styles/animations' as *;
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $trk-button-gap;
+  font-family: $trk-font-family-primary;
+  font-weight: $trk-font-weight-medium;
+  text-decoration: none;
+  white-space: nowrap;
+  border: $trk-border-width-2 solid transparent;
+  cursor: pointer;
+  user-select: none;
+  transition: 
+    background-color $trk-duration-fast $trk-ease-out,
+    border-color $trk-duration-fast $trk-ease-out,
+    color $trk-duration-fast $trk-ease-out,
+    box-shadow $trk-duration-fast $trk-ease-out,
+    transform $trk-duration-fast $trk-ease-out;
+  
+  &:focus-visible {
+    outline: none;
+    box-shadow: $trk-shadow-focus;
+  }
+  
+  &:active:not(.disabled) {
+    transform: scale(0.98);
+  }
+}
+
+.size-sm {
+  height: 32px;
+  min-width: 32px;
+  padding: $trk-space-1 $trk-space-3;
+  font-size: $trk-font-size-sm;
+  border-radius: $trk-radius-button-sm;
+  
+  &.iconOnly {
+    width: 32px;
+    padding: 0;
+  }
+}
+
+.size-md {
+  height: 40px;
+  min-width: 40px;
+  padding: $trk-space-2 $trk-space-4;
+  font-size: $trk-font-size-base;
+  border-radius: $trk-radius-button;
+  
+  &.iconOnly {
+    width: 40px;
+    padding: 0;
+  }
+}
+
+.size-lg {
+  height: 48px;
+  min-width: 48px;
+  padding: $trk-space-3 $trk-space-5;
+  font-size: $trk-font-size-lg;
+  border-radius: $trk-radius-button-lg;
+  
+  &.iconOnly {
+    width: 48px;
+    padding: 0;
+  }
+}
+
+.variant-primary {
+  background-color: $trk-brand;
+  border-color: $trk-brand;
+  color: white;
+  
+  &:hover:not(.disabled) {
+    background-color: $trk-brand-dark;
+    border-color: $trk-brand-dark;
+  }
+}
+
+.variant-secondary {
+  background-color: transparent;
+  border-color: $trk-border-strong;
+  color: $trk-text;
+  
+  &:hover:not(.disabled) {
+    background-color: $trk-surface-subtle;
+    border-color: $trk-text-soft;
+  }
+}
+
+.variant-tertiary {
+  background-color: transparent;
+  border-color: transparent;
+  color: $trk-brand;
+  
+  &:hover:not(.disabled) {
+    background-color: $trk-brand-tint;
+  }
+}
+
+.variant-danger {
+  background-color: $trk-red;
+  border-color: $trk-red;
+  color: white;
+  
+  &:hover:not(.disabled) {
+    background-color: $trk-red-dark;
+    border-color: $trk-red-dark;
+  }
+  
+  &:focus-visible {
+    box-shadow: $trk-shadow-focus-error;
+  }
+}
+
+.variant-success {
+  background-color: $trk-green;
+  border-color: $trk-green;
+  color: white;
+  
+  &:hover:not(.disabled) {
+    background-color: $trk-green-dark;
+    border-color: $trk-green-dark;
+  }
+  
+  &:focus-visible {
+    box-shadow: $trk-shadow-focus-success;
+  }
+}
+
+.variant-ghost {
+  background-color: transparent;
+  border-color: transparent;
+  color: $trk-text-muted;
+  
+  &:hover:not(.disabled) {
+    background-color: $trk-surface-subtle;
+    color: $trk-text;
+  }
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.loading {
+  position: relative;
+  cursor: wait;
+  
+  .content {
+    opacity: 0.7;
+  }
+}
+
+.loadingSpinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  gap: inherit;
+}
+
+.iconStart,
+.iconEnd {
+  flex-shrink: 0;
+}
+
+.iconOnly {
+  .content {
+    display: none;
+  }
+}

@@ -1,0 +1,103 @@
+/**
+ * TRÅKKE DESIGNSYSTEM
+ * Switch Component Styles
+ */
+
+@use '../../styles/colors' as *;
+@use '../../styles/spacing' as *;
+@use '../../styles/typography' as *;
+@use '../../styles/borders' as *;
+@use '../../styles/animations' as *;
+
+.container {
+  display: inline-flex;
+  align-items: center;
+  gap: $trk-space-3;
+  cursor: pointer;
+  
+  &.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  &.labelLeft {
+    flex-direction: row-reverse;
+  }
+}
+
+.switch {
+  position: relative;
+  flex-shrink: 0;
+  border-radius: $trk-radius-full;
+  background-color: $trk-border-strong;
+  transition: background-color $trk-duration-fast $trk-ease-out;
+  
+  .container:hover:not(.disabled) & {
+    background-color: $trk-text-soft;
+  }
+}
+
+.size-sm .switch { width: 32px; height: 18px; }
+.size-md .switch { width: 40px; height: 22px; }
+.size-lg .switch { width: 48px; height: 26px; }
+
+.input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  cursor: inherit;
+  
+  &:focus-visible + .switch {
+    outline: 2px solid $trk-blue;
+    outline-offset: 2px;
+  }
+  
+  &:checked + .switch {
+    background-color: $trk-brand;
+    
+    .thumb {
+      transform: translateX(100%);
+    }
+  }
+}
+
+.thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  background-color: white;
+  border-radius: $trk-radius-full;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  transition: transform $trk-duration-fast $trk-ease-out;
+}
+
+.size-sm .thumb { width: 14px; height: 14px; }
+.size-md .thumb { width: 18px; height: 18px; }
+.size-lg .thumb { width: 22px; height: 22px; }
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: $trk-space-1;
+}
+
+.label {
+  font-family: $trk-font-family-primary;
+  font-weight: $trk-font-weight-normal;
+  color: $trk-text;
+  line-height: $trk-line-height-tight;
+}
+
+.size-sm .label { font-size: $trk-font-size-sm; }
+.size-md .label { font-size: $trk-font-size-base; }
+.size-lg .label { font-size: $trk-font-size-lg; }
+
+.helperText {
+  margin: 0;
+  font-family: $trk-font-family-primary;
+  font-size: $trk-font-size-xs;
+  color: $trk-text-soft;
+}

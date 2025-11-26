@@ -1,0 +1,162 @@
+/**
+ * TRÅKKE DESIGNSYSTEM
+ * Input Component Styles
+ */
+
+@use '../../styles/colors' as *;
+@use '../../styles/spacing' as *;
+@use '../../styles/typography' as *;
+@use '../../styles/borders' as *;
+@use '../../styles/shadows' as *;
+@use '../../styles/animations' as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: $trk-space-1;
+}
+
+.fullWidth { width: 100%; }
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: $trk-space-1;
+  font-family: $trk-font-family-primary;
+  font-size: $trk-font-size-sm;
+  font-weight: $trk-font-weight-medium;
+  color: $trk-text;
+}
+
+.required { color: $trk-red; }
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: $trk-space-2;
+  background-color: $trk-surface;
+  border: $trk-border-width-1 solid $trk-border;
+  border-radius: $trk-radius-input;
+  transition: 
+    border-color $trk-duration-fast $trk-ease-out,
+    box-shadow $trk-duration-fast $trk-ease-out,
+    background-color $trk-duration-fast $trk-ease-out;
+  
+  &:hover:not(.disabled) { border-color: $trk-border-strong; }
+  &:focus-within:not(.disabled) {
+    border-color: $trk-blue;
+    box-shadow: $trk-shadow-focus;
+  }
+}
+
+.size-sm {
+  height: 32px;
+  padding: 0 $trk-space-2;
+  .input { font-size: $trk-font-size-sm; }
+}
+
+.size-md {
+  height: 40px;
+  padding: 0 $trk-space-3;
+  .input { font-size: $trk-font-size-base; }
+}
+
+.size-lg {
+  height: 48px;
+  padding: 0 $trk-space-4;
+  .input { font-size: $trk-font-size-lg; }
+}
+
+.variant-default { background-color: $trk-surface; }
+
+.variant-filled {
+  background-color: $trk-surface-subtle;
+  border-color: transparent;
+  
+  &:focus-within:not(.disabled) {
+    background-color: $trk-surface;
+    border-color: $trk-blue;
+  }
+}
+
+.variant-outlined { background-color: transparent; }
+
+.hasError {
+  border-color: $trk-red;
+  &:focus-within { box-shadow: $trk-shadow-focus-error; }
+}
+
+.hasSuccess {
+  border-color: $trk-green;
+  &:focus-within { box-shadow: $trk-shadow-focus-success; }
+}
+
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: $trk-surface-subtle;
+  .input { cursor: not-allowed; }
+}
+
+.hasIconStart .input { padding-left: 0; }
+.hasIconEnd .input { padding-right: 0; }
+
+.input {
+  flex: 1;
+  width: 100%;
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  font-family: $trk-font-family-primary;
+  font-weight: $trk-font-weight-normal;
+  color: $trk-text;
+  background: transparent;
+  border: none;
+  outline: none;
+  
+  &::placeholder { color: $trk-text-soft; }
+  
+  &::-webkit-search-decoration,
+  &::-webkit-search-cancel-button { display: none; }
+  &::-ms-clear { display: none; }
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+  &[type='number'] { -moz-appearance: textfield; }
+}
+
+.iconStart, .iconEnd, .prefix, .suffix {
+  flex-shrink: 0;
+  color: $trk-text-soft;
+}
+
+.prefix, .suffix { display: flex; align-items: center; }
+
+.clearButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $trk-space-1;
+  margin: 0;
+  background: transparent;
+  border: none;
+  border-radius: $trk-radius-full;
+  color: $trk-text-soft;
+  cursor: pointer;
+  transition: color $trk-duration-fast $trk-ease-out, background-color $trk-duration-fast $trk-ease-out;
+  
+  &:hover { color: $trk-text; background-color: $trk-surface-subtle; }
+  &:focus-visible { outline: 2px solid $trk-blue; outline-offset: 2px; }
+}
+
+.helperText {
+  margin: 0;
+  margin-top: $trk-space-1;
+  font-family: $trk-font-family-primary;
+  font-size: $trk-font-size-xs;
+  font-weight: $trk-font-weight-normal;
+  color: $trk-text-soft;
+}
+
+.errorText { color: $trk-red; }
+.successText { color: $trk-green; }

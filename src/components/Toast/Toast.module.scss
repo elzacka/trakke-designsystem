@@ -1,0 +1,117 @@
+/**
+ * TRÅKKE DESIGNSYSTEM
+ * Toast Component Styles
+ */
+
+@use '../../styles/colors' as *;
+@use '../../styles/spacing' as *;
+@use '../../styles/typography' as *;
+@use '../../styles/borders' as *;
+@use '../../styles/shadows' as *;
+@use '../../styles/animations' as *;
+
+.toast {
+  display: flex;
+  align-items: flex-start;
+  gap: $trk-space-3;
+  padding: $trk-space-3 $trk-space-4;
+  background-color: $trk-surface;
+  border-radius: $trk-radius-md;
+  border-left: 4px solid;
+  box-shadow: $trk-shadow-lg;
+  animation: slideInRight $trk-duration-normal $trk-ease-out;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.variant-info {
+  border-left-color: $trk-blue;
+  .icon { color: $trk-blue; }
+}
+
+.variant-success {
+  border-left-color: $trk-green;
+  .icon { color: $trk-green; }
+}
+
+.variant-warning {
+  border-left-color: $trk-yellow;
+  .icon { color: $trk-yellow-dark; }
+}
+
+.variant-error {
+  border-left-color: $trk-red;
+  .icon { color: $trk-red; }
+}
+
+.icon {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+}
+
+.title {
+  margin: 0;
+  font-family: $trk-font-family-primary;
+  font-size: $trk-font-size-base;
+  font-weight: $trk-font-weight-semibold;
+  color: $trk-text;
+  line-height: $trk-line-height-tight;
+}
+
+.message {
+  margin: $trk-space-1 0 0;
+  font-family: $trk-font-family-primary;
+  font-size: $trk-font-size-sm;
+  color: $trk-text-muted;
+  line-height: $trk-line-height-normal;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: $trk-space-2;
+  margin-top: $trk-space-2;
+}
+
+.dismissButton {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  margin: -$trk-space-1;
+  background: transparent;
+  border: none;
+  border-radius: $trk-radius-sm;
+  color: $trk-text-soft;
+  cursor: pointer;
+  transition: 
+    color $trk-duration-fast $trk-ease-out,
+    background-color $trk-duration-fast $trk-ease-out;
+  
+  &:hover {
+    color: $trk-text;
+    background-color: $trk-surface-subtle;
+  }
+  
+  &:focus-visible {
+    outline: 2px solid $trk-blue;
+    outline-offset: 2px;
+  }
+}

@@ -1,0 +1,117 @@
+/**
+ * TRÅKKE DESIGNSYSTEM
+ * Badge Component Styles
+ */
+
+@use '../../styles/colors' as *;
+@use '../../styles/spacing' as *;
+@use '../../styles/typography' as *;
+@use '../../styles/borders' as *;
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $trk-space-1;
+  font-family: $trk-font-family-primary;
+  font-weight: $trk-font-weight-medium;
+  white-space: nowrap;
+  border-radius: $trk-radius-full;
+}
+
+.size-sm {
+  height: 18px;
+  padding: 0 $trk-space-2;
+  font-size: 10px;
+}
+
+.size-md {
+  height: 22px;
+  padding: 0 $trk-space-2;
+  font-size: $trk-font-size-xs;
+}
+
+.size-lg {
+  height: 26px;
+  padding: 0 $trk-space-3;
+  font-size: $trk-font-size-sm;
+}
+
+.variant-default {
+  background-color: $trk-surface-subtle;
+  color: $trk-text-muted;
+  
+  &.outline {
+    background-color: transparent;
+    border: 1px solid $trk-border;
+  }
+}
+
+.variant-brand {
+  background-color: $trk-brand-tint;
+  color: $trk-brand;
+  
+  &.outline {
+    background-color: transparent;
+    border: 1px solid $trk-brand;
+  }
+}
+
+.variant-success {
+  background-color: $trk-green-light;
+  color: $trk-green-dark;
+  
+  &.outline {
+    background-color: transparent;
+    border: 1px solid $trk-green;
+  }
+}
+
+.variant-warning {
+  background-color: $trk-yellow-light;
+  color: $trk-yellow-dark;
+  
+  &.outline {
+    background-color: transparent;
+    border: 1px solid $trk-yellow;
+  }
+}
+
+.variant-danger {
+  background-color: $trk-red-light;
+  color: $trk-red-dark;
+  
+  &.outline {
+    background-color: transparent;
+    border: 1px solid $trk-red;
+  }
+}
+
+.variant-info {
+  background-color: $trk-blue-light;
+  color: $trk-blue-dark;
+  
+  &.outline {
+    background-color: transparent;
+    border: 1px solid $trk-blue;
+  }
+}
+
+.dot {
+  padding: 0;
+  
+  &.size-sm { width: 6px; height: 6px; }
+  &.size-md { width: 8px; height: 8px; }
+  &.size-lg { width: 10px; height: 10px; }
+  
+  &.variant-default { background-color: $trk-text-soft; }
+  &.variant-brand { background-color: $trk-brand; }
+  &.variant-success { background-color: $trk-green; }
+  &.variant-warning { background-color: $trk-yellow; }
+  &.variant-danger { background-color: $trk-red; }
+  &.variant-info { background-color: $trk-blue; }
+}
+
+.icon {
+  flex-shrink: 0;
+}

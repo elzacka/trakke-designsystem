@@ -1,0 +1,97 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Design Tokens/Spacing" />
+
+# Spacing
+
+Tråkke bruker et 8px grid-system for konsistent avstand mellom elementer.
+
+## Spacing-skala
+
+| Token | Verdi | Pixler |
+|-------|-------|--------|
+| `space-0` | 0 | 0px |
+| `space-1` | 0.5x | 4px |
+| `space-2` | 1x | 8px |
+| `space-3` | 1.5x | 12px |
+| `space-4` | 2x | 16px |
+| `space-5` | 2.5x | 20px |
+| `space-6` | 3x | 24px |
+| `space-7` | 4x | 32px |
+| `space-8` | 5x | 40px |
+| `space-9` | 6x | 48px |
+| `space-10` | 7x | 56px |
+| `space-11` | 8x | 64px |
+| `space-12` | 10x | 80px |
+| `space-13` | 12x | 96px |
+| `space-14` | 16x | 128px |
+
+## Semantiske tokens
+
+For enklere bruk har vi også semantiske navn:
+
+| Token | Verdi | Bruk |
+|-------|-------|------|
+| `xs` | 4px | Mikro-avstand |
+| `sm` | 8px | Liten avstand |
+| `md` | 12px | Medium avstand |
+| `lg` | 16px | Standard avstand |
+| `xl` | 24px | Stor avstand |
+| `2xl` | 32px | Ekstra stor |
+| `3xl` | 48px | Seksjon-avstand |
+| `4xl` | 64px | Side-avstand |
+
+## Komponent-spacing
+
+Forhåndsdefinerte verdier for vanlige komponenter:
+
+| Komponent | Verdi |
+|-----------|-------|
+| Button padding | 12px 16px |
+| Input padding | 12px |
+| Card padding | 16px |
+| Sheet padding | 16px (mobil), 24px (desktop) |
+| FAB størrelse | 56px |
+
+## Touch targets
+
+For tilgjengelighet (WCAG AAA) bruker vi minimum 44px for alle interaktive elementer:
+
+```scss
+$trk-touch-target-min: 44px;
+```
+
+## Bruk i kode
+
+### SCSS
+
+```scss
+@use '@trakke/design-system/styles/spacing' as *;
+
+.my-component {
+  padding: $trk-space-4;
+  margin-bottom: $trk-space-6;
+  gap: $trk-space-3;
+}
+```
+
+### CSS Custom Properties
+
+```css
+.my-component {
+  padding: var(--trk-space-4);
+  margin-bottom: var(--trk-space-6);
+  gap: var(--trk-space-3);
+}
+```
+
+### JavaScript
+
+```tsx
+import { spacing } from '@trakke/design-system/tokens';
+
+const style = {
+  padding: spacing[4],  // '16px'
+  gap: spacing[3],      // '12px'
+};
+```
