@@ -229,7 +229,3 @@ Designsystemet følger Tråkkes privacy-first filosofi:
 ## Lisens
 
 MIT
-
----
-
-Bygget for det norske friluftslivet
