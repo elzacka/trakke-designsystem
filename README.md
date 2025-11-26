@@ -1,10 +1,13 @@
-# Tråkke Design System v2
+
+![trakke_designsystem](https://github.com/user-attachments/assets/cd9085f1-bbc9-40d7-8119-500887e7385e)
+
+# Tråkke designsystem v2
 
 Et moderne, tilgjengelig designsystem for norske friluftsapplikasjoner.
 
 ## Filosofi
 
-Tråkke Design System er bygget rundt konseptet **"Nordisk ro"** – et designspråk som reflekterer den norske friluftsfilosofien:
+Tråkke designsystem er bygget rundt konseptet **"Nordisk ro"** – et designspråk som reflekterer den norske friluftsfilosofien:
 
 - **Friluftsliv**: Design inspirert av norsk natur og utendørskultur
 - **Privacy-first**: Ingen eksterne avhengigheter, all data i Norge/EU
