@@ -12,7 +12,7 @@ Et moderne, tilgjengelig designsystem for friluftsappen [Tråkke](https://github
 
 ## Filosofi
 
-Tråkke designsystem er bygget rundt konseptet **"Nordisk ro"** – et designspråk som reflekterer den norske friluftsfilosofien:
+Tråkke designsystem er bygget rundt et konsept jeg har kalt **"Nordisk ro"** – et designspråk som reflekterer den norske friluftsfilosofien:
 
 - **Friluftsliv**: Design inspirert av norsk natur og utendørskultur
 - **Privacy-first**: Ingen eksterne avhengigheter, all data i Norge/EU
