@@ -45,6 +45,11 @@ const preview: Preview = {
     docs: {
       toc: true,
     },
+    options: {
+      storySort: {
+        order: ['Introduksjon', 'Design Tokens', 'Components', '*'],
+      },
+    },
   },
   globalTypes: {
     locale: {
