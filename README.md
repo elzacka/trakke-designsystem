@@ -1,9 +1,14 @@
 
 ![trakke_designsystem](https://github.com/user-attachments/assets/cd9085f1-bbc9-40d7-8119-500887e7385e)
 
-# Tråkke designsystem v2
+# Tråkke designsystem i Storybook
+Designsystem med React-komponenter for appen Tråkke. Alt er publisert i Storybook, en løsning for for visuell dokumentasjon og testing av UI-komponenter. 
 
-Et moderne, tilgjengelig designsystem for friluftsappen [Tråkke](https://github.com/elzacka/trakke-pwa).
+
+# Om selve designsystemet
+
+Et moderne, tilgjengelig designsystem for friluftsappen [Tråkke](https://github.com/elzacka/trakke-pwa). Designsystemet har jeg satt sammen selv, med hjelp av Claude.ai og Claude Code.
+
 
 ## Filosofi
 
