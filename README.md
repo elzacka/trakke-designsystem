@@ -2,7 +2,7 @@
 ![trakke_designsystem](https://github.com/user-attachments/assets/cd9085f1-bbc9-40d7-8119-500887e7385e)
 
 # Tråkke designsystem i Storybook
-Designsystem med React-komponenter for appen Tråkke. Alt er publisert i Storybook, en løsning for for visuell dokumentasjon og testing av UI-komponenter. 
+Designsystem med React-komponenter for appen Tråkke. Alt er publisert i Storybook, en løsning for visuell dokumentasjon og testing av UI-komponenter. 
 
 
 # Om selve designsystemet
