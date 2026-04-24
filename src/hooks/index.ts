@@ -6,16 +6,28 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { breakpoints } from '../tokens';
 
-/**
- * Hook for responsive design - detects current breakpoint
- */
+function useMediaQuery(query: string): boolean {
+  const [matches, setMatches] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia(query);
+    setMatches(mediaQuery.matches);
+
+    const handler = (e: MediaQueryListEvent) => setMatches(e.matches);
+    mediaQuery.addEventListener('change', handler);
+    return () => mediaQuery.removeEventListener('change', handler);
+  }, [query]);
+
+  return matches;
+}
+
 export function useBreakpoint() {
   const [currentBreakpoint, setCurrentBreakpoint] = useState<keyof typeof breakpoints>('xs');
-  
+
   useEffect(() => {
     const checkBreakpoint = () => {
       const width = window.innerWidth;
-      
+
       if (width >= parseInt(breakpoints['2xl'])) {
         setCurrentBreakpoint('2xl');
       } else if (width >= parseInt(breakpoints.xl)) {
@@ -30,142 +42,103 @@ export function useBreakpoint() {
         setCurrentBreakpoint('xs');
       }
     };
-    
+
     checkBreakpoint();
     window.addEventListener('resize', checkBreakpoint);
     return () => window.removeEventListener('resize', checkBreakpoint);
   }, []);
-  
+
   return currentBreakpoint;
 }
 
-/**
- * Hook for detecting mobile devices
- */
 export function useIsMobile() {
   const breakpoint = useBreakpoint();
   return breakpoint === 'xs' || breakpoint === 'sm';
 }
 
-/**
- * Hook for detecting touch devices
- */
 export function useIsTouchDevice() {
   const [isTouch, setIsTouch] = useState(false);
-  
+
   useEffect(() => {
     setIsTouch('ontouchstart' in window || navigator.maxTouchPoints > 0);
   }, []);
-  
+
   return isTouch;
 }
 
-/**
- * Hook for reduced motion preference
- */
 export function useReducedMotion() {
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
-  
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    setPrefersReducedMotion(mediaQuery.matches);
-    
-    const handler = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
-    mediaQuery.addEventListener('change', handler);
-    return () => mediaQuery.removeEventListener('change', handler);
-  }, []);
-  
-  return prefersReducedMotion;
+  return useMediaQuery('(prefers-reduced-motion: reduce)');
 }
 
-/**
- * Hook for dark mode preference
- */
 export function useDarkMode() {
-  const [prefersDark, setPrefersDark] = useState(false);
-  
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    setPrefersDark(mediaQuery.matches);
-    
-    const handler = (e: MediaQueryListEvent) => setPrefersDark(e.matches);
-    mediaQuery.addEventListener('change', handler);
-    return () => mediaQuery.removeEventListener('change', handler);
-  }, []);
-  
-  return prefersDark;
+  return useMediaQuery('(prefers-color-scheme: dark)');
 }
 
-/**
- * Hook for click outside detection
- */
 export function useClickOutside<T extends HTMLElement>(
   callback: () => void
 ) {
   const ref = useRef<T>(null);
-  
+
   useEffect(() => {
-    const handleClick = (event: MouseEvent) => {
-      if (ref.current && !ref.current.contains(event.target as Node)) {
+    const handleEvent = (event: MouseEvent | TouchEvent) => {
+      if (!(event.target instanceof Node)) return;
+      if (ref.current && !ref.current.contains(event.target)) {
         callback();
       }
     };
-    
-    document.addEventListener('mousedown', handleClick);
-    return () => document.removeEventListener('mousedown', handleClick);
+
+    document.addEventListener('mousedown', handleEvent);
+    document.addEventListener('touchstart', handleEvent);
+    return () => {
+      document.removeEventListener('mousedown', handleEvent);
+      document.removeEventListener('touchstart', handleEvent);
+    };
   }, [callback]);
-  
+
   return ref;
 }
 
-/**
- * Hook for keyboard shortcuts
- */
 export function useKeyboardShortcut(
   key: string,
   callback: () => void,
   options: { ctrl?: boolean; shift?: boolean; alt?: boolean; meta?: boolean } = {}
 ) {
+  const { ctrl, shift, alt, meta } = options;
+
   useEffect(() => {
     const handler = (event: KeyboardEvent) => {
       if (
         event.key.toLowerCase() === key.toLowerCase() &&
-        (!options.ctrl || event.ctrlKey) &&
-        (!options.shift || event.shiftKey) &&
-        (!options.alt || event.altKey) &&
-        (!options.meta || event.metaKey)
+        (!ctrl || event.ctrlKey) &&
+        (!shift || event.shiftKey) &&
+        (!alt || event.altKey) &&
+        (!meta || event.metaKey)
       ) {
         event.preventDefault();
         callback();
       }
     };
-    
+
     document.addEventListener('keydown', handler);
     return () => document.removeEventListener('keydown', handler);
-  }, [key, callback, options]);
+  }, [key, callback, ctrl, shift, alt, meta]);
 }
 
-/**
- * Hook for debounced values
- */
 export function useDebounce<T>(value: T, delay: number): T {
   const [debouncedValue, setDebouncedValue] = useState(value);
-  
+
   useEffect(() => {
     const timer = setTimeout(() => setDebouncedValue(value), delay);
     return () => clearTimeout(timer);
   }, [value, delay]);
-  
+
   return debouncedValue;
 }
 
-/**
- * Hook for local storage
- */
 export function useLocalStorage<T>(key: string, initialValue: T) {
   const [storedValue, setStoredValue] = useState<T>(() => {
     if (typeof window === 'undefined') return initialValue;
-    
+
     try {
       const item = window.localStorage.getItem(key);
       return item ? JSON.parse(item) : initialValue;
@@ -173,54 +146,80 @@ export function useLocalStorage<T>(key: string, initialValue: T) {
       return initialValue;
     }
   });
-  
+
+  // Re-read from storage when key changes
+  useEffect(() => {
+    try {
+      const item = window.localStorage.getItem(key);
+      if (item !== null) {
+        setStoredValue(JSON.parse(item));
+      } else {
+        setStoredValue(initialValue);
+      }
+    } catch {
+      setStoredValue(initialValue);
+    }
+  }, [key]); // eslint-disable-line react-hooks/exhaustive-deps
+
   const setValue = useCallback((value: T | ((val: T) => T)) => {
     try {
-      const valueToStore = value instanceof Function ? value(storedValue) : value;
-      setStoredValue(valueToStore);
-      window.localStorage.setItem(key, JSON.stringify(valueToStore));
+      setStoredValue((prev) => {
+        const valueToStore = value instanceof Function ? value(prev) : value;
+        window.localStorage.setItem(key, JSON.stringify(valueToStore));
+        return valueToStore;
+      });
     } catch (error) {
       console.error('Error saving to localStorage:', error);
     }
-  }, [key, storedValue]);
-  
+  }, [key]);
+
   return [storedValue, setValue] as const;
 }
 
-/**
- * Hook for focus trap
- */
 export function useFocusTrap<T extends HTMLElement>() {
   const ref = useRef<T>(null);
-  
+  const previousFocusRef = useRef<Element | null>(null);
+
   useEffect(() => {
     const element = ref.current;
     if (!element) return;
-    
-    const focusableElements = element.querySelectorAll(
-      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-    );
-    
-    const firstElement = focusableElements[0] as HTMLElement;
-    const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
-    
+
+    previousFocusRef.current = document.activeElement;
+
+    const focusableSelector =
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+
+    const getFocusable = () => element.querySelectorAll<HTMLElement>(focusableSelector);
+
+    const elements = getFocusable();
+    elements[0]?.focus();
+
     const handleTab = (e: KeyboardEvent) => {
       if (e.key !== 'Tab') return;
-      
-      if (e.shiftKey && document.activeElement === firstElement) {
+
+      const focusable = getFocusable();
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (e.shiftKey && document.activeElement === first) {
         e.preventDefault();
-        lastElement?.focus();
-      } else if (!e.shiftKey && document.activeElement === lastElement) {
+        last?.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
         e.preventDefault();
-        firstElement?.focus();
+        first?.focus();
       }
     };
-    
+
     element.addEventListener('keydown', handleTab);
-    firstElement?.focus();
-    
-    return () => element.removeEventListener('keydown', handleTab);
+
+    return () => {
+      element.removeEventListener('keydown', handleTab);
+      const prev = previousFocusRef.current;
+      if (prev instanceof HTMLElement) {
+        prev.focus();
+      }
+    };
   }, []);
-  
+
   return ref;
 }

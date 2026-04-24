@@ -53,7 +53,7 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(
     const toastClasses = clsx(styles.toast, styles[`variant-${variant}`], className);
 
     return (
-      <div ref={ref} className={toastClasses} role="alert" aria-live="polite" {...props}>
+      <div ref={ref} className={toastClasses} role="alert" {...props}>
         {showIcon && <Icon name={icon || defaultIcons[variant]} size={20} className={styles.icon} />}
         <div className={styles.content}>
           {title && <p className={styles.title}>{title}</p>}

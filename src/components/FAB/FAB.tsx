@@ -153,14 +153,10 @@ export const FAB = forwardRef<HTMLDivElement, FABProps>(
     
     const handleItemClick = useCallback((item: FABMenuItem) => {
       if (item.disabled) return;
-      
+
       item.onClick();
       toggleMenu();
-      
-      if (!disableHaptics && 'vibrate' in navigator) {
-        navigator.vibrate(10);
-      }
-    }, [toggleMenu, disableHaptics]);
+    }, [toggleMenu]);
     
     useEffect(() => {
       if (!isOpen) return;
@@ -176,18 +172,24 @@ export const FAB = forwardRef<HTMLDivElement, FABProps>(
       return () => document.removeEventListener('keydown', handleEscape);
     }, [isOpen, toggleMenu]);
     
+    const containerRef = useRef<HTMLDivElement>(null);
+
     useEffect(() => {
       if (!isOpen) return;
-      
-      const handleOutsideClick = (e: MouseEvent) => {
-        const target = e.target as HTMLElement;
-        if (!target.closest(`.${styles.container}`)) {
+
+      const handleOutsideClick = (e: MouseEvent | TouchEvent) => {
+        if (!(e.target instanceof Node)) return;
+        if (!containerRef.current?.contains(e.target)) {
           toggleMenu();
         }
       };
-      
-      document.addEventListener('click', handleOutsideClick);
-      return () => document.removeEventListener('click', handleOutsideClick);
+
+      document.addEventListener('mousedown', handleOutsideClick);
+      document.addEventListener('touchstart', handleOutsideClick);
+      return () => {
+        document.removeEventListener('mousedown', handleOutsideClick);
+        document.removeEventListener('touchstart', handleOutsideClick);
+      };
     }, [isOpen, toggleMenu]);
     
     const groupedItems = items.reduce((acc, item) => {
@@ -199,7 +201,7 @@ export const FAB = forwardRef<HTMLDivElement, FABProps>(
     }, {} as Record<string, FABMenuItem[]>);
     
     const groups = Object.entries(groupedItems);
-    let itemIndex = 0;
+    const flatItems = groups.flatMap(([, g]) => g);
     
     const containerClasses = clsx(
       styles.container,
@@ -215,7 +217,11 @@ export const FAB = forwardRef<HTMLDivElement, FABProps>(
     );
 
     return (
-      <div ref={ref} className={containerClasses} {...props}>
+      <div ref={(node) => {
+          containerRef.current = node;
+          if (typeof ref === 'function') ref(node);
+          else if (ref) ref.current = node;
+        }} className={containerClasses} {...props}>
         {items.length > 0 && (
           <div 
             className={clsx(styles.menu, { [styles.menuOpen]: isOpen })}
@@ -225,7 +231,7 @@ export const FAB = forwardRef<HTMLDivElement, FABProps>(
             {groups.map(([groupName, groupItems]) => (
               <div key={groupName} className={styles.group}>
                 {groupItems.map((item) => {
-                  const currentIndex = itemIndex++;
+                  const currentIndex = flatItems.indexOf(item);
                   
                   return (
                     <button

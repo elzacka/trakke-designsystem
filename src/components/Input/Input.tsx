@@ -152,7 +152,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         {label && (
           <label htmlFor={id} className={styles.label}>
             {label}
-            {required && <span className={styles.required}>*</span>}
+            {required && <span className={styles.required} aria-hidden={true}>*</span>}
           </label>
         )}
         
@@ -165,7 +165,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
               name={iconStart} 
               size={iconSize} 
               className={styles.iconStart}
-              aria-hidden="true"
+              aria-hidden={true}
             />
           )}
           
@@ -178,7 +178,10 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             required={required}
             aria-invalid={hasError}
             aria-describedby={
-              hasError ? errorId : helperText ? helperId : undefined
+              hasError ? errorId
+              : hasSuccess && typeof success === 'string' ? helperId
+              : helperText ? helperId
+              : undefined
             }
             value={value}
             {...props}
@@ -191,7 +194,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
               className={styles.clearButton}
               onClick={onClear}
               aria-label="Tøm felt"
-              tabIndex={-1}
+              tabIndex={0}
             >
               <Icon name="close" size={16} />
             </button>
@@ -204,7 +207,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
               name={iconEnd} 
               size={iconSize} 
               className={styles.iconEnd}
-              aria-hidden="true"
+              aria-hidden={true}
             />
           )}
         </div>

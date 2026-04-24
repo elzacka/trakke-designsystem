@@ -3,24 +3,14 @@
 // ============================================================================
 
 // Core tokens
-@import 'colors';
-@import 'spacing';
-@import 'typography';
-@import 'shadows';
-@import 'z-index';
-@import 'breakpoints';
-@import 'animations';
-
-// Border radius (inline to avoid circular dependency)
-$trk-radius-none: 0;
-$trk-radius-xs: 4px;
-$trk-radius-sm: 8px;
-$trk-radius-md: 12px;
-$trk-radius-lg: 16px;
-$trk-radius-xl: 20px;
-$trk-radius-2xl: 24px;
-$trk-radius-3xl: 32px;
-$trk-radius-full: 9999px;
+@use 'colors' as *;
+@use 'spacing' as *;
+@use 'typography' as *;
+@use 'shadows' as *;
+@use 'z-index' as *;
+@use 'breakpoints' as *;
+@use 'animations' as *;
+@use 'borders' as *;
 
 // Base styles
 *, *::before, *::after {

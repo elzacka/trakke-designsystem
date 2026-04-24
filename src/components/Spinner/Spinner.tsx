@@ -84,7 +84,6 @@ export const Spinner = forwardRef<HTMLDivElement, SpinnerProps>(
         className={spinnerClasses}
         style={combinedStyle}
         role="status"
-        aria-label={label}
         {...props}
       >
         <svg

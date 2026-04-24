@@ -138,7 +138,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             name={iconStart} 
             size={iconSize} 
             className={styles.iconStart}
-            aria-hidden="true"
+            aria-hidden={true}
           />
         )}
         
@@ -155,7 +155,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             name={iconEnd} 
             size={iconSize} 
             className={styles.iconEnd}
-            aria-hidden="true"
+            aria-hidden={true}
           />
         )}
         

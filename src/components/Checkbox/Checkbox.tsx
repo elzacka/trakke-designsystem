@@ -3,7 +3,7 @@
  * Checkbox Component
  */
 
-import React, { forwardRef, InputHTMLAttributes, useId } from 'react';
+import React, { forwardRef, InputHTMLAttributes, useEffect, useId, useRef } from 'react';
 import { clsx } from 'clsx';
 import { Icon } from '../Icon';
 import styles from './Checkbox.module.scss';
@@ -47,7 +47,14 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   ) => {
     const generatedId = useId();
     const id = providedId || generatedId;
+    const helperId = `${id}-helper`;
     const hasError = Boolean(error);
+    const internalRef = useRef<HTMLInputElement>(null);
+
+    useEffect(() => {
+      const el = internalRef.current;
+      if (el) el.indeterminate = indeterminate;
+    }, [indeterminate]);
     
     const containerClasses = clsx(
       styles.container,
@@ -63,13 +70,22 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       <div className={containerClasses}>
         <label className={styles.label} htmlFor={id}>
           <input
-            ref={ref}
+            ref={(node) => {
+              internalRef.current = node;
+              if (typeof ref === 'function') ref(node);
+              else if (ref) ref.current = node;
+            }}
             type="checkbox"
             id={id}
             disabled={disabled}
             className={styles.input}
             aria-invalid={hasError}
-            data-indeterminate={indeterminate}
+            aria-checked={indeterminate ? 'mixed' : undefined}
+            aria-describedby={
+              hasError && typeof error === 'string' ? helperId
+              : helperText ? helperId
+              : undefined
+            }
             {...props}
           />
           <span className={styles.checkbox}>
@@ -83,7 +99,10 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
         </label>
         
         {(helperText || (hasError && typeof error === 'string')) && (
-          <p className={clsx(styles.helperText, { [styles.errorText]: hasError })}>
+          <p
+            id={helperId}
+            className={clsx(styles.helperText, { [styles.errorText]: hasError })}
+          >
             {hasError && typeof error === 'string' ? error : helperText}
           </p>
         )}

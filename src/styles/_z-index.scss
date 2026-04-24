@@ -1,3 +1,5 @@
+@use "sass:map";
+
 // ============================================================================
 // TRÅKKE DESIGN SYSTEM - Z-INDEX SCALE
 // Strukturert lag-system for konsistent stacking
@@ -60,8 +62,8 @@ $trk-z-indices: (
 
 // Helper function
 @function z($layer) {
-  @if map-has-key($trk-z-indices, $layer) {
-    @return map-get($trk-z-indices, $layer);
+  @if map.has-key($trk-z-indices, $layer) {
+    @return map.get($trk-z-indices, $layer);
   }
   @warn "Unknown z-index layer: #{$layer}";
   @return null;

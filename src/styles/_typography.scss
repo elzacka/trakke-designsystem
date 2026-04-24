@@ -1,3 +1,5 @@
+@use "sass:map";
+
 // ============================================================================
 // TRÅKKE DESIGNSYSTEM - TYPOGRAPHY
 // Exo 2 som primærfont, system fonts som fallback
@@ -161,11 +163,11 @@ $trk-text-caption: (
 
 // Utility mixin for applying typography presets
 @mixin typography($preset) {
-  font-family: map-get($preset, font-family);
-  font-size: map-get($preset, font-size);
-  font-weight: map-get($preset, font-weight);
-  line-height: map-get($preset, line-height);
-  letter-spacing: map-get($preset, letter-spacing);
+  font-family: map.get($preset, font-family);
+  font-size: map.get($preset, font-size);
+  font-weight: map.get($preset, font-weight);
+  line-height: map.get($preset, line-height);
+  letter-spacing: map.get($preset, letter-spacing);
 }
 
 // CSS custom properties export

@@ -1,3 +1,5 @@
+@use "sass:map";
+
 // ============================================================================
 // TRÅKKE DESIGN SYSTEM - BREAKPOINTS
 // Mobile-first responsive design
@@ -30,7 +32,7 @@ $trk-container-2xl: 1536px;
 
 // Responsive mixins
 @mixin breakpoint-up($name) {
-  $min: map-get($trk-breakpoints, $name);
+  $min: map.get($trk-breakpoints, $name);
   @if $min {
     @media (min-width: $min) {
       @content;
@@ -41,15 +43,15 @@ $trk-container-2xl: 1536px;
 }
 
 @mixin breakpoint-down($name) {
-  $max: map-get($trk-breakpoints, $name) - 1px;
+  $max: map.get($trk-breakpoints, $name) - 1px;
   @media (max-width: $max) {
     @content;
   }
 }
 
 @mixin breakpoint-between($lower, $upper) {
-  $min: map-get($trk-breakpoints, $lower);
-  $max: map-get($trk-breakpoints, $upper) - 1px;
+  $min: map.get($trk-breakpoints, $lower);
+  $max: map.get($trk-breakpoints, $upper) - 1px;
   @media (min-width: $min) and (max-width: $max) {
     @content;
   }

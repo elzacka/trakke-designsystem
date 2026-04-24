@@ -61,4 +61,6 @@ export const Text = forwardRef(TextComponent) as <T extends ElementType = 'span'
   props: TextProps<T> & { ref?: React.ForwardedRef<Element> }
 ) => React.ReactElement | null;
 
+(Text as { displayName?: string }).displayName = 'Text';
+
 export default Text;

@@ -40,7 +40,7 @@ export const Logo = forwardRef<HTMLDivElement, LogoProps>(
     );
 
     return (
-      <div ref={ref} className={logoClasses} aria-label="Tråkke" {...props}>
+      <div ref={ref} className={logoClasses} role="img" aria-label="Tråkke" {...props}>
         {variant !== 'text' && (
           <Icon 
             name="forest" 
@@ -48,7 +48,7 @@ export const Logo = forwardRef<HTMLDivElement, LogoProps>(
             weight={200}
             grade={-25}
             className={styles.icon} 
-            aria-hidden="true"
+            aria-hidden={true}
           />
         )}
         {variant !== 'icon' && (
